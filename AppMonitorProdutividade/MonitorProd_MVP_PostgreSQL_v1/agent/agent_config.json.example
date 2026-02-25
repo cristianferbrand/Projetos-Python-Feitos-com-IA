@@ -1,0 +1,16 @@
+{
+  "server_url": "http://127.0.0.1:8000",
+  "token": "AGENTE_TOKEN_EXEMPLO_123",
+  "device_name": "PC-Suporte-01",
+  "screenshot_interval": 30,
+  "event_flush_interval": 10,
+  "blur_radius": 8,
+  "enable_screenshot": true,
+  "blocklist_keywords": [
+    "WhatsApp",
+    "Gmail",
+    "Banco",
+    "Itaú",
+    "Bradesco"
+  ]
+}

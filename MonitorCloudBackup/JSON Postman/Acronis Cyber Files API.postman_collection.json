@@ -1,0 +1,4510 @@
+{
+	"info": {
+		"_postman_id": "ea46bf26-5220-48a8-9fd9-15680bffba68",
+		"name": "Acronis Cyber Files API",
+		"description": "Provides access to secure content management features for use in your own product, including automation of file storage, sync, share, and search.\n\nFull Reference [https://developer.acronis.com/doc/files/v1/reference/](https://developer.acronis.com/doc/files/v1/reference/)\n\nCopyright © 2019-2024 Acronis International GmbH. This is distributed under MIT license.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48727415",
+		"_collection_link": "https://www.postman.com/grey-rocket-585331/acronis-cyber-platform-s-public-workspace/collection/ihufle6/acronis-cyber-files-api?action=share&source=collection_link&creator=48727415"
+	},
+	"item": [
+		{
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "Create API Client",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"type\": \"api_client\",\r\n\t\"tenant_id\": \"{{my_tenant_id}}\",\r\n\t\"token_endpoint_auth_method\": \"client_secret_basic\",\r\n\t\"data\": {\r\n\t\t\"client_name\": \"API.Client\"\r\n\t}\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/2/clients",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"clients"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create API Client",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"type\": \"agent\",\r\n\t\"tenant_id\": \"{{my_tenant_id}}\",\r\n\t\"token_endpoint_auth_method\": \"client_secret_basic\",\r\n\t\"data\": {\r\n\t\t\"client_name\": \"API.Client\"\r\n\t}\r\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/2/clients",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"2",
+										"clients"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Feb 2020 11:20:39 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "479"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "f39d584f0cff42b0e5b66448c3947ccb"
+								},
+								{
+									"key": "X-Int-Request-Id",
+									"value": "bUW6jbo8aJ6NgqnxPTsdZ7"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token_endpoint_auth_method\": \"client_secret_basic\",\n    \"created_by\": \"bfa9d672-35ee-4cad-b987-024d145f7fe3\",\n    \"redirect_uris\": [],\n    \"data\": {\n        \"client_name\": \"API.Client\"\n    },\n    \"status\": \"enabled\",\n    \"created_at\": \"2020-02-26T11:20:39+00:00\",\n    \"tenant_id\": \"53b471e1-50dd-4557-ae6d-f687923121d4\",\n    \"client_secret\": \"aa6f81cb2b7f4306aeeb16815ea71ef3\",\n    \"registration_access_token\": \"5fef399909ca48929c9e8d04350af3e1\",\n    \"type\": \"agent\",\n    \"client_id\": \"c5597043-98ed-4474-ad09-d90a34513651\",\n    \"client_secret_expires_at\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Issue a JWT token for Account Management API Calls",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"access_token\", jsonData.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{client_id}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"name": "Content-Type",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/2/idp/token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"idp",
+								"token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Issue a JWT Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"name": "Content-Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/2/idp/token",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"2",
+										"idp",
+										"token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Feb 2020 08:46:50 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "7b0cb0506c137a4ba40b76756ad27c12"
+								},
+								{
+									"key": "X-Int-Request-Id",
+									"value": "pba9djkgyxDK69dYwvCN2F"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"<access_token>\",\n    \"token_type\": \"bearer\",\n    \"expires_on\": 1580813210,\n    \"id_token\": \"<id_token>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Issue a JWT token for Cyber Files API Calls",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"access_token\", jsonData.access_token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{client_id}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "text"
+								},
+								{
+									"key": "totp_code",
+									"value": "123456",
+									"description": "The Time-based One-Time Password (TOTP) code required for accounts with two-factor authentication (2FA) enabled. ",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/2/idp/token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"idp",
+								"token"
+							]
+						},
+						"description": "For Cyber Files API other type of grant type than for Account Management API. It must be grant_type equals password."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Devices",
+			"item": [
+				{
+					"name": "Get Device List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/fc/api/v1/devices",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fc",
+								"api",
+								"v1",
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Device Info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/fc/api/v1/devices/{{device_uuid}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fc",
+								"api",
+								"v1",
+								"devices",
+								"{{device_uuid}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sync & Share Nodes",
+			"item": [
+				{
+					"name": "Get Sync & Share Nodes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/fc/api/v1/sync_and_share_nodes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fc",
+								"api",
+								"v1",
+								"sync_and_share_nodes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Sync & Share Nodes",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/fc/api/v1/sync_and_share_nodes",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"fc",
+										"api",
+										"v1",
+										"sync_and_share_nodes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Jul 2020 14:33:34 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Content-Range",
+									"value": "items 0-2/2"
+								},
+								{
+									"key": "x-flash",
+									"value": "%7B%7D"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9301f4bfc5dbbc8f548f894c354acd01\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "rest_access_token=H3ax1ZVKh8%2Frr4FUPyYeqoDXq4qNvVn2R7WKfE3GgKQmM8rFBvugF3qMMF%2FQmEDfBCrQbenwP4o5IVk7NzdhTw%3D%3D; path=/; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "2006e71df842cb5f6f4025f2e0d1e2f7"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.120881"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"uuid\": \"8b26212b-4fba-44c0-9e30-8e79462142e2\",\n        \"name\": \"Test11\",\n        \"is_directory\": true,\n        \"size\": null,\n        \"file_modification_date\": \"2020-07-28T14:32:39Z\",\n        \"is_deleted\": false,\n        \"synced\": \"sync_2_way\",\n        \"preview_type\": null,\n        \"expiration_date\": null,\n        \"has_revisions\": true,\n        \"has_deleted\": true,\n        \"read_only\": false,\n        \"has_active_links\": false,\n        \"has_shared_child_nodes\": false,\n        \"is_shared\": false,\n        \"owner_email\": \"cyber.files.test@example.com\",\n        \"can_be_streamed\": true,\n        \"path\": \"Test11\",\n        \"volume\": {\n            \"id\": \"\",\n            \"name\": \"Sync & Share\"\n        },\n        \"parents\": [\n            {\n                \"name\": \"Sync & Share\",\n                \"uuid\": \"0\",\n                \"is_root\": true\n            },\n            {\n                \"name\": \"Test11\",\n                \"uuid\": \"8b26212b-4fba-44c0-9e30-8e79462142e2\",\n                \"is_root\": false\n            }\n        ],\n        \"type\": \"sync-and-share\",\n        \"checksum\": \"\",\n        \"parent_uuid\": \"0\",\n        \"has_writable_children\": true,\n        \"revision\": 1,\n        \"office_online_permissions\": {\n            \"can_create_files_into\": false,\n            \"can_be_previewed\": false,\n            \"can_be_edited\": false\n        },\n        \"owner\": {\n            \"uuid\": \"e68fd8f1-1ab9-46fd-a86f-830266e2678d\",\n            \"name\": \"Firstcyber.files.test Lastcyber.files.test\",\n            \"email\": \"cyber.files.test@example.com\"\n        },\n        \"permissions\": {\n            \"can_be_renamed\": true,\n            \"can_be_unsubscribed\": false,\n            \"can_be_restored\": false,\n            \"can_create_folders_into\": true,\n            \"can_be_copied\": true,\n            \"can_create_files_into\": true,\n            \"can_view_members\": true,\n            \"can_be_synced_2_way\": true,\n            \"can_be_deleted\": true,\n            \"can_be_synced_1_way\": false,\n            \"can_be_moved\": true,\n            \"can_be_shared\": true,\n            \"can_be_shared_via_link\": false,\n            \"can_invite\": true,\n            \"can_be_downloaded\": true,\n            \"can_selectively_purge_revisions\": false,\n            \"can_be_notarized\": false\n        },\n        \"actions\": {\n            \"download\": \"/fc/api/v1/sync_and_share_nodes/8b26212b-4fba-44c0-9e30-8e79462142e2/download\",\n            \"upload\": \"/fc/api/v1/sync_and_share_nodes/8b26212b-4fba-44c0-9e30-8e79462142e2/upload\",\n            \"preview\": null\n        },\n        \"latest_notarized_revision\": null\n    },\n    {\n        \"uuid\": \"fa67d029-6a57-4606-a3f7-961dc900c348\",\n        \"name\": \"Test12\",\n        \"is_directory\": true,\n        \"size\": null,\n        \"file_modification_date\": \"2020-07-28T14:32:46Z\",\n        \"is_deleted\": false,\n        \"synced\": \"sync_2_way\",\n        \"preview_type\": null,\n        \"expiration_date\": null,\n        \"has_revisions\": true,\n        \"has_deleted\": true,\n        \"read_only\": false,\n        \"has_active_links\": false,\n        \"has_shared_child_nodes\": false,\n        \"is_shared\": false,\n        \"owner_email\": \"cyber.files.test@example.com\",\n        \"can_be_streamed\": true,\n        \"path\": \"Test12\",\n        \"volume\": {\n            \"id\": \"\",\n            \"name\": \"Sync & Share\"\n        },\n        \"parents\": [\n            {\n                \"name\": \"Sync & Share\",\n                \"uuid\": \"0\",\n                \"is_root\": true\n            },\n            {\n                \"name\": \"Test12\",\n                \"uuid\": \"fa67d029-6a57-4606-a3f7-961dc900c348\",\n                \"is_root\": false\n            }\n        ],\n        \"type\": \"sync-and-share\",\n        \"checksum\": \"\",\n        \"parent_uuid\": \"0\",\n        \"has_writable_children\": true,\n        \"revision\": 1,\n        \"office_online_permissions\": {\n            \"can_create_files_into\": false,\n            \"can_be_previewed\": false,\n            \"can_be_edited\": false\n        },\n        \"owner\": {\n            \"uuid\": \"e68fd8f1-1ab9-46fd-a86f-830266e2678d\",\n            \"name\": \"Firstcyber.files.test Lastcyber.files.test\",\n            \"email\": \"cyber.files.test@example.com\"\n        },\n        \"permissions\": {\n            \"can_be_renamed\": true,\n            \"can_be_unsubscribed\": false,\n            \"can_be_restored\": false,\n            \"can_create_folders_into\": true,\n            \"can_be_copied\": true,\n            \"can_create_files_into\": true,\n            \"can_view_members\": true,\n            \"can_be_synced_2_way\": true,\n            \"can_be_deleted\": true,\n            \"can_be_synced_1_way\": false,\n            \"can_be_moved\": true,\n            \"can_be_shared\": true,\n            \"can_be_shared_via_link\": false,\n            \"can_invite\": true,\n            \"can_be_downloaded\": true,\n            \"can_selectively_purge_revisions\": false,\n            \"can_be_notarized\": false\n        },\n        \"actions\": {\n            \"download\": \"/fc/api/v1/sync_and_share_nodes/fa67d029-6a57-4606-a3f7-961dc900c348/download\",\n            \"upload\": \"/fc/api/v1/sync_and_share_nodes/fa67d029-6a57-4606-a3f7-961dc900c348/upload\",\n            \"preview\": null\n        },\n        \"latest_notarized_revision\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Create a folder in the root",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Cyber Folder 1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/fc/api/v1/sync_and_share_nodes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fc",
+								"api",
+								"v1",
+								"sync_and_share_nodes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create a folder",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Cyber Folder 1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/fc/api/v1/sync_and_share_nodes",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"fc",
+										"api",
+										"v1",
+										"sync_and_share_nodes"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Jul 2020 14:37:42 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-flash",
+									"value": "%7B%7D"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"76710acf643ab37ff93568cfc74b829b\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "587d83d052140ebd425e1886d59c3655"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.153707"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"uuid\": \"0f17ceb3-74a8-4da4-8d46-2b345c5e619b\",\n    \"name\": \"Cyber Folder 1\",\n    \"is_directory\": true,\n    \"size\": null,\n    \"file_modification_date\": \"2020-07-28T14:37:42Z\",\n    \"is_deleted\": false,\n    \"synced\": \"sync_2_way\",\n    \"preview_type\": null,\n    \"expiration_date\": null,\n    \"has_revisions\": true,\n    \"has_deleted\": true,\n    \"read_only\": false,\n    \"has_active_links\": false,\n    \"has_shared_child_nodes\": false,\n    \"is_shared\": false,\n    \"owner_email\": \"cyber.files.test@example.com\",\n    \"can_be_streamed\": true,\n    \"path\": \"Cyber Folder 1\",\n    \"volume\": {\n        \"id\": \"\",\n        \"name\": \"Sync & Share\"\n    },\n    \"parents\": [\n        {\n            \"name\": \"Sync & Share\",\n            \"uuid\": \"0\",\n            \"is_root\": true\n        },\n        {\n            \"name\": \"Cyber Folder 1\",\n            \"uuid\": \"0f17ceb3-74a8-4da4-8d46-2b345c5e619b\",\n            \"is_root\": false\n        }\n    ],\n    \"type\": \"sync-and-share\",\n    \"checksum\": \"\",\n    \"parent_uuid\": \"0\",\n    \"has_writable_children\": true,\n    \"revision\": 1,\n    \"office_online_permissions\": {\n        \"can_create_files_into\": false,\n        \"can_be_previewed\": false,\n        \"can_be_edited\": false\n    },\n    \"owner\": {\n        \"uuid\": \"e68fd8f1-1ab9-46fd-a86f-830266e2678d\",\n        \"name\": \"Firstcyber.files.test Lastcyber.files.test\",\n        \"email\": \"cyber.files.test@example.com\"\n    },\n    \"permissions\": {\n        \"can_be_renamed\": true,\n        \"can_be_unsubscribed\": false,\n        \"can_be_restored\": false,\n        \"can_create_folders_into\": true,\n        \"can_be_copied\": true,\n        \"can_create_files_into\": true,\n        \"can_view_members\": true,\n        \"can_be_synced_2_way\": true,\n        \"can_be_deleted\": true,\n        \"can_be_synced_1_way\": false,\n        \"can_be_moved\": true,\n        \"can_be_shared\": true,\n        \"can_be_shared_via_link\": false,\n        \"can_invite\": true,\n        \"can_be_downloaded\": true,\n        \"can_selectively_purge_revisions\": false,\n        \"can_be_notarized\": false\n    },\n    \"actions\": {\n        \"download\": \"/fc/api/v1/sync_and_share_nodes/0f17ceb3-74a8-4da4-8d46-2b345c5e619b/download\",\n        \"upload\": \"/fc/api/v1/sync_and_share_nodes/0f17ceb3-74a8-4da4-8d46-2b345c5e619b/upload\",\n        \"preview\": null\n    },\n    \"latest_notarized_revision\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Create a sub-folder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Cyber Folder 2\",\r\n    \"parent_uuid\": \"{{parent_folder_uuid}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/fc/api/v1/sync_and_share_nodes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fc",
+								"api",
+								"v1",
+								"sync_and_share_nodes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create a folder",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Cyber Folder 1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/fc/api/v1/sync_and_share_nodes",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"fc",
+										"api",
+										"v1",
+										"sync_and_share_nodes"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Jul 2020 14:37:42 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-flash",
+									"value": "%7B%7D"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"76710acf643ab37ff93568cfc74b829b\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "587d83d052140ebd425e1886d59c3655"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.153707"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"uuid\": \"0f17ceb3-74a8-4da4-8d46-2b345c5e619b\",\n    \"name\": \"Cyber Folder 1\",\n    \"is_directory\": true,\n    \"size\": null,\n    \"file_modification_date\": \"2020-07-28T14:37:42Z\",\n    \"is_deleted\": false,\n    \"synced\": \"sync_2_way\",\n    \"preview_type\": null,\n    \"expiration_date\": null,\n    \"has_revisions\": true,\n    \"has_deleted\": true,\n    \"read_only\": false,\n    \"has_active_links\": false,\n    \"has_shared_child_nodes\": false,\n    \"is_shared\": false,\n    \"owner_email\": \"cyber.files.test@example.com\",\n    \"can_be_streamed\": true,\n    \"path\": \"Cyber Folder 1\",\n    \"volume\": {\n        \"id\": \"\",\n        \"name\": \"Sync & Share\"\n    },\n    \"parents\": [\n        {\n            \"name\": \"Sync & Share\",\n            \"uuid\": \"0\",\n            \"is_root\": true\n        },\n        {\n            \"name\": \"Cyber Folder 1\",\n            \"uuid\": \"0f17ceb3-74a8-4da4-8d46-2b345c5e619b\",\n            \"is_root\": false\n        }\n    ],\n    \"type\": \"sync-and-share\",\n    \"checksum\": \"\",\n    \"parent_uuid\": \"0\",\n    \"has_writable_children\": true,\n    \"revision\": 1,\n    \"office_online_permissions\": {\n        \"can_create_files_into\": false,\n        \"can_be_previewed\": false,\n        \"can_be_edited\": false\n    },\n    \"owner\": {\n        \"uuid\": \"e68fd8f1-1ab9-46fd-a86f-830266e2678d\",\n        \"name\": \"Firstcyber.files.test Lastcyber.files.test\",\n        \"email\": \"cyber.files.test@example.com\"\n    },\n    \"permissions\": {\n        \"can_be_renamed\": true,\n        \"can_be_unsubscribed\": false,\n        \"can_be_restored\": false,\n        \"can_create_folders_into\": true,\n        \"can_be_copied\": true,\n        \"can_create_files_into\": true,\n        \"can_view_members\": true,\n        \"can_be_synced_2_way\": true,\n        \"can_be_deleted\": true,\n        \"can_be_synced_1_way\": false,\n        \"can_be_moved\": true,\n        \"can_be_shared\": true,\n        \"can_be_shared_via_link\": false,\n        \"can_invite\": true,\n        \"can_be_downloaded\": true,\n        \"can_selectively_purge_revisions\": false,\n        \"can_be_notarized\": false\n    },\n    \"actions\": {\n        \"download\": \"/fc/api/v1/sync_and_share_nodes/0f17ceb3-74a8-4da4-8d46-2b345c5e619b/download\",\n        \"upload\": \"/fc/api/v1/sync_and_share_nodes/0f17ceb3-74a8-4da4-8d46-2b345c5e619b/upload\",\n        \"preview\": null\n    },\n    \"latest_notarized_revision\": null\n}"
+						},
+						{
+							"name": "Create a sub-folder",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Cyber Folder 2\",\r\n    \"id\": \"{{parent_folder_uuid}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/fc/api/v1/sync_and_share_nodes",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"fc",
+										"api",
+										"v1",
+										"sync_and_share_nodes"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Jul 2020 14:40:10 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-flash",
+									"value": "%7B%7D"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2366d8fc2fc2f3c98a79ae920f2d79a8\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "ee9a0c4fb39a258bac8b31ceeef2aad1"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.144674"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"uuid\": \"3e76de17-8f3f-40ca-a21a-f5e4f6067897\",\n    \"name\": \"Cyber Folder 2\",\n    \"is_directory\": true,\n    \"size\": null,\n    \"file_modification_date\": \"2020-07-28T14:40:10Z\",\n    \"is_deleted\": false,\n    \"synced\": \"sync_2_way\",\n    \"preview_type\": null,\n    \"expiration_date\": null,\n    \"has_revisions\": true,\n    \"has_deleted\": true,\n    \"read_only\": false,\n    \"has_active_links\": false,\n    \"has_shared_child_nodes\": false,\n    \"is_shared\": false,\n    \"owner_email\": \"cyber.files.test@example.com\",\n    \"can_be_streamed\": true,\n    \"path\": \"Cyber Folder 2\",\n    \"volume\": {\n        \"id\": \"\",\n        \"name\": \"Sync & Share\"\n    },\n    \"parents\": [\n        {\n            \"name\": \"Sync & Share\",\n            \"uuid\": \"0\",\n            \"is_root\": true\n        },\n        {\n            \"name\": \"Cyber Folder 2\",\n            \"uuid\": \"3e76de17-8f3f-40ca-a21a-f5e4f6067897\",\n            \"is_root\": false\n        }\n    ],\n    \"type\": \"sync-and-share\",\n    \"checksum\": \"\",\n    \"parent_uuid\": \"0\",\n    \"has_writable_children\": true,\n    \"revision\": 1,\n    \"office_online_permissions\": {\n        \"can_create_files_into\": false,\n        \"can_be_previewed\": false,\n        \"can_be_edited\": false\n    },\n    \"owner\": {\n        \"uuid\": \"e68fd8f1-1ab9-46fd-a86f-830266e2678d\",\n        \"name\": \"Firstcyber.files.test Lastcyber.files.test\",\n        \"email\": \"cyber.files.test@example.com\"\n    },\n    \"permissions\": {\n        \"can_be_renamed\": true,\n        \"can_be_unsubscribed\": false,\n        \"can_be_restored\": false,\n        \"can_create_folders_into\": true,\n        \"can_be_copied\": true,\n        \"can_create_files_into\": true,\n        \"can_view_members\": true,\n        \"can_be_synced_2_way\": true,\n        \"can_be_deleted\": true,\n        \"can_be_synced_1_way\": false,\n        \"can_be_moved\": true,\n        \"can_be_shared\": true,\n        \"can_be_shared_via_link\": false,\n        \"can_invite\": true,\n        \"can_be_downloaded\": true,\n        \"can_selectively_purge_revisions\": false,\n        \"can_be_notarized\": false\n    },\n    \"actions\": {\n        \"download\": \"/fc/api/v1/sync_and_share_nodes/3e76de17-8f3f-40ca-a21a-f5e4f6067897/download\",\n        \"upload\": \"/fc/api/v1/sync_and_share_nodes/3e76de17-8f3f-40ca-a21a-f5e4f6067897/upload\",\n        \"preview\": null\n    },\n    \"latest_notarized_revision\": null\n}"
+						},
+						{
+							"name": "Create a sub-folder - Error ",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Cyber Folder 1\",\r\n    \"id\": \"{{parent_folder_uuid}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/fc/api/v1/sync_and_share_nodes",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"fc",
+										"api",
+										"v1",
+										"sync_and_share_nodes"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Jul 2020 14:39:48 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "10816d16ed9b2b1e4de3579e3e8e7ec2"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.068337"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"domain\": \"Files\",\n        \"code\": 92,\n        \"message\": \"'Cyber Folder 1' already exists in this location.\",\n        \"context\": {\n            \"conflict\": {\n                \"uuid\": \"0f17ceb3-74a8-4da4-8d46-2b345c5e619b\",\n                \"name\": \"Cyber Folder 1\",\n                \"is_directory\": true,\n                \"size\": null,\n                \"file_modification_date\": \"2020-07-28T14:37:42Z\",\n                \"is_deleted\": false,\n                \"preview_type\": null,\n                \"expiration_date\": null,\n                \"has_revisions\": true,\n                \"has_deleted\": true,\n                \"read_only\": false,\n                \"has_active_links\": false,\n                \"has_shared_child_nodes\": false,\n                \"is_shared\": false,\n                \"owner_email\": \"cyber.files.test@example.com\",\n                \"can_be_streamed\": true,\n                \"path\": \"Cyber Folder 1\",\n                \"volume\": {\n                    \"id\": \"\",\n                    \"name\": \"Sync & Share\"\n                },\n                \"parents\": [\n                    {\n                        \"name\": \"Sync & Share\",\n                        \"uuid\": \"0\",\n                        \"is_root\": true\n                    },\n                    {\n                        \"name\": \"Cyber Folder 1\",\n                        \"uuid\": \"0f17ceb3-74a8-4da4-8d46-2b345c5e619b\",\n                        \"is_root\": false\n                    }\n                ],\n                \"type\": \"sync-and-share\",\n                \"checksum\": \"\",\n                \"parent_uuid\": \"0\",\n                \"has_writable_children\": true,\n                \"revision\": 1,\n                \"owner\": {\n                    \"uuid\": \"e68fd8f1-1ab9-46fd-a86f-830266e2678d\",\n                    \"name\": \"Firstcyber.files.test Lastcyber.files.test\",\n                    \"email\": \"cyber.files.test@example.com\"\n                }\n            }\n        }\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Audit Log",
+			"item": [
+				{
+					"name": "Get Audit Log Entries List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/fc/api/v1/audit_log",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fc",
+								"api",
+								"v1",
+								"audit_log"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get a user info",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/fc/api/v1/users/{{user_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fc",
+								"api",
+								"v1",
+								"users",
+								"{{user_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get a user info",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{base_url}}/fc/api/v1/users/{{user_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"fc",
+										"api",
+										"v1",
+										"users",
+										"{{user_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Jul 2020 13:16:08 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-flash",
+									"value": "%7B%7D"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"abff22b2ed572ac35e0e5baa04df4833\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "rest_access_token=gB8B3oLDqZLoabbXIQhKFyJlFSCMopz%2B%2B%2FkIf6xsFWqCRZAj4oKplVmj1QJZ7TH8HQQ8yRI4nOgqdrCHd4yFIQ%3D%3D; path=/; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "ad8d89f9d121d888984fde1bb9dbc1bd"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.040972"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"Stanislav Pavlov\",\n    \"email\": \"stanislav.i.pavlov+demos@gmail.com\",\n    \"uuid\": \"ecaa110b7-28f4-4935-8f29-8065414442c3\",\n    \"group_id\": null,\n    \"allow_sync_and_share\": false,\n    \"can_manage_mobile_data_sources\": true,\n    \"can_manage_mobile_policies\": true,\n    \"can_manage_users\": true,\n    \"can_view_audit_log\": true,\n    \"can_access_forensic_api\": false,\n    \"disabled\": false,\n    \"free_space_to_maintain\": 0,\n    \"is_superuser\": true,\n    \"ldap_authentication\": false,\n    \"licensed\": true,\n    \"locale\": \"en\",\n    \"provisioned_admin\": false,\n    \"purge_proactively\": false,\n    \"pending\": false,\n    \"override_quota\": null,\n    \"quota\": null,\n    \"sid\": null,\n    \"upn\": null,\n    \"domain\": null,\n    \"login_name\": null,\n    \"login_url\": \"https://dev-cloud.acronis.com/fc/signin?email=stanislav.i.pavlov%2Bdemos%40gmail.com\",\n    \"confirmed_at\": \"2020-05-21T10:39:52Z\",\n    \"updated_at\": \"2020-07-28T13:16:08Z\",\n    \"created_at\": \"2020-05-21T10:39:52Z\",\n    \"deleted_at\": null,\n    \"last_logged_in_at\": \"2020-07-28T13:16:08Z\",\n    \"mobile_phone_number\": null,\n    \"ldap_mobile_phone_number\": null,\n    \"can_mobile_phone_number_be_changed\": true,\n    \"override_quota_in_gb\": null,\n    \"quota_in_mb\": null,\n    \"free_space_to_maintain_mb\": 0,\n    \"sync_and_share_content\": {\n        \"file_count\": 0,\n        \"folder_count\": 0,\n        \"used_space\": 0\n    },\n    \"policy\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Settings",
+			"item": [
+				{
+					"name": "Get Server Settings",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/fc/api/v1/settings/server",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fc",
+								"api",
+								"v1",
+								"settings",
+								"server"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Server Settings",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{base_url}}/fc/api/v1/settings/server",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"fc",
+										"api",
+										"v1",
+										"settings",
+										"server"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Jul 2020 13:07:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-flash",
+									"value": "%7B%7D"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d501a4fb77c4992d82a190a3d1f6130e\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "rest_access_token=dIZUQDP9id2zbZ5gV43XEJ7fFXLBjdOkLCXVrGVwFaCMXQWt5t%2F89zV1e1810Q8LkFCwFxxBPv5pDUCz3%2FJAtw%3D%3D; path=/; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "0257d655107fafb17d4c9a571eaba7b7"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.044421"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"server_name\": \"File Sync & Share\",\n    \"white_label\": \"File Sync & Share\",\n    \"white_label_url\": \"mobilecho\",\n    \"root_web_address\": \"https://dev-cloud.acronis.com\",\n    \"management_server_address\": \"https://mc-beta-cloud.acronis.com\",\n    \"default_locale\": \"en\",\n    \"session_timeout_in_minutes\": 120,\n    \"sync_and_share_enabled\": true,\n    \"notification_admin_enabled\": false,\n    \"notification_admin_email\": \"adminname@mycompany.com\",\n    \"notification_admin_frequency\": 30,\n    \"restrict_ip_address\": false,\n    \"ip_address_mapping\": \"\"\n}"
+						},
+						{
+							"name": "Get Server Settings",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{base_url}}/fc/api/v1/settings/server",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"fc",
+										"api",
+										"v1",
+										"settings",
+										"server"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Jul 2020 13:07:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-flash",
+									"value": "%7B%7D"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d501a4fb77c4992d82a190a3d1f6130e\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "rest_access_token=dIZUQDP9id2zbZ5gV43XEJ7fFXLBjdOkLCXVrGVwFaCMXQWt5t%2F89zV1e1810Q8LkFCwFxxBPv5pDUCz3%2FJAtw%3D%3D; path=/; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "0257d655107fafb17d4c9a571eaba7b7"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.044421"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"server_name\": \"File Sync & Share\",\n    \"white_label\": \"File Sync & Share\",\n    \"white_label_url\": \"mobilecho\",\n    \"root_web_address\": \"https://dev-cloud.acronis.com\",\n    \"management_server_address\": \"https://mc-beta-cloud.acronis.com\",\n    \"default_locale\": \"en\",\n    \"session_timeout_in_minutes\": 120,\n    \"sync_and_share_enabled\": true,\n    \"notification_admin_enabled\": false,\n    \"notification_admin_email\": \"adminname@mycompany.com\",\n    \"notification_admin_frequency\": 30,\n    \"restrict_ip_address\": false,\n    \"ip_address_mapping\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Purging Policies Settings",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/fc/api/v1/settings/purging_policies",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fc",
+								"api",
+								"v1",
+								"settings",
+								"purging_policies"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Purging Policies Settings",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{base_url}}/fc/api/v1/settings/purging_policies",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"fc",
+										"api",
+										"v1",
+										"settings",
+										"purging_policies"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Jul 2020 13:07:52 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-flash",
+									"value": "%7B%7D"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4cf7b638ded0f2cc8950bf25642fc00e\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "rest_access_token=0ASGCNotiLmTUUtr0etQDhUy5Rh5XD0IIbU3LDNNnrGR%2FLIVcEHdbMt%2BZBhV97CH0lk0js0HIEtveTsy5g0Bpg%3D%3D; path=/; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "c3930711083170d74f196c67d674ad1d"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.044415"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"purge_deleted_files_older_than_enabled\": false,\n    \"purge_deleted_files_older_than_n\": 2,\n    \"purge_deleted_files_older_than_units\": \"months\",\n    \"purge_revisions_older_than_enabled\": false,\n    \"purge_revisions_older_than_n\": 1,\n    \"purge_revisions_older_than_units\": \"months\",\n    \"keep_at_least_n_revisions_enabled\": false,\n    \"keep_at_least_n_revisions\": 5,\n    \"only_keep_n_revisions_enabled\": false,\n    \"only_keep_n_revisions\": 7,\n    \"purge_thread_granularity\": 300,\n    \"allow_users_to_selectively_purge_revisions\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Email Settings",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/fc/api/v1/settings/email",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fc",
+								"api",
+								"v1",
+								"settings",
+								"email"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Email Settings",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{base_url}}/fc/api/v1/settings/email",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"fc",
+										"api",
+										"v1",
+										"settings",
+										"email"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Jul 2020 13:09:21 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-flash",
+									"value": "%7B%7D"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"da4c25824fca6ea6e6c4fe284e410dc0\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "rest_access_token=A1tPYL6nMn689FY4YZAUrPrhQxbAcXK7rtHbnsXc1Ta8h5xndnHJeuQahIpGemRO88SKhTloJ24R1tLNczEFSA%3D%3D; path=/; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "d15fa2362ec7b9d367891d8a945cb7c1"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.028723"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"from_name\": \"File Sync & Share\",\n    \"from_address\": \"noreply-afc@acronis.com\",\n    \"use_system_address_for_all_headers\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Audit Log Settings",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/fc/api/v1/settings/audit_log",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fc",
+								"api",
+								"v1",
+								"settings",
+								"audit_log"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Audit Log Settings",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{base_url}}/fc/api/v1/settings/audit_log",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"fc",
+										"api",
+										"v1",
+										"settings",
+										"audit_log"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Jul 2020 13:10:06 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-flash",
+									"value": "%7B%7D"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"0019903d20d86c868f6e478808e40694\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "rest_access_token=tPp81D5%2B%2B%2F0pOFXGSnlPPASBMicWhfN3bOejYO66Hezvz7W2B2Ugf7bifI7x9DqQjVq7RrLYs0TIei%2FuAgGLEQ%3D%3D; path=/; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "7d272ca9d3072ca69cb1951c4165cd75"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.036817"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"purge_logs_older_than_enabled\": true,\n    \"purge_logs_older_than_units\": \"months\",\n    \"export_to_file_before_purging_enabled\": false,\n    \"export_to_file_before_purging_format\": \"csv\",\n    \"export_to_file_before_purging_path\": \"\",\n    \"export_timezone\": \"local\",\n    \"purge_logs_older_than_n\": 6\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Security Settings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/fc/api/v1/settings/security",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fc",
+								"api",
+								"v1",
+								"settings",
+								"security"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Security Settings",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/fc/api/v1/settings/security",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"fc",
+										"api",
+										"v1",
+										"settings",
+										"security"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Jul 2020 13:11:07 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-flash",
+									"value": "%7B%7D"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f759b032d8afa513bc13e9c93f8bff6a\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "rest_access_token=D0F%2Ffhyf78%2BzZ8L9xg%2F5QvpJP4AgM4Nuu02wh0CYogYqZPch%2FPrDQizJQuBzY8xFjkAnozZBmmPQjFwUHVeKkw%3D%3D; path=/; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "606601c16396297e8ba60c2fd5d36eef"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.035692"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"allow_collaborators_to_invite\": true,\n    \"node_share_link_enable\": true,\n    \"node_share_link_allow_public_links\": true,\n    \"node_share_link_allow_login_links\": true,\n    \"node_share_link_require_ad_login_for_login_links\": false,\n    \"node_share_link_single_use_only\": false,\n    \"node_share_link_ttl_range_enable\": true,\n    \"node_share_link_ttl_max\": 365,\n    \"shared_folder_expiration_required\": false,\n    \"shared_folder_expiration_max_days\": 365,\n    \"whitelist_enable\": false,\n    \"ldap_whitelist\": [],\n    \"domain_whitelist\": [],\n    \"ldap_blacklist\": [],\n    \"domain_blacklist\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Web Preview Settings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/fc/api/v1/settings/web_preview",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fc",
+								"api",
+								"v1",
+								"settings",
+								"web_preview"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Web Preview Settings",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/fc/api/v1/settings/web_preview",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"fc",
+										"api",
+										"v1",
+										"settings",
+										"web_preview"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Jul 2020 13:11:59 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-flash",
+									"value": "%7B%7D"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"51572ebf62da3e1fd85444887cde86e8\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "rest_access_token=0ZreRL7TCvmXEQTpNdp5pfgS9oiYvAmv1AahmCKcoNc3taSffhk6hMfSVDctYSx8GmjAXVsOCAtu%2BefbxmLZIA%3D%3D; path=/; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "9c63a4a3f02eb9c2cddd9457ed8bea98"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.033617"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"office_online_integration_enabled\": false,\n    \"office_online_wopi_url\": \"https://onenote.officeapps.live.com\",\n    \"office_online_type_of_use\": \"editing\",\n    \"office_online_additional_services_enabled\": false,\n    \"office_online_allow_self_signed_certificates\": false,\n    \"web_preview_enabled\": true,\n    \"only_allow_not_converted\": false,\n    \"max_cache_size_mb\": 2000,\n    \"servlet_allow_self_signed_certificates\": true,\n    \"generation_max_concurrent_calls\": 2,\n    \"pdf_previewer\": \"default\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Runner: Create a partner, a customer, a user and assign a user Cyber Files user role and ceate folders hierarchy",
+			"item": [
+				{
+					"name": "Issue a JWT token for Account Management API Calls",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"access_token\", jsonData.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{client_id}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"name": "Content-Type",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/2/idp/token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"idp",
+								"token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Issue a JWT Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"name": "Content-Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/2/idp/token",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"2",
+										"idp",
+										"token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Feb 2020 08:46:50 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "7b0cb0506c137a4ba40b76756ad27c12"
+								},
+								{
+									"key": "X-Int-Request-Id",
+									"value": "pba9djkgyxDK69dYwvCN2F"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"<access_token>\",\n    \"token_type\": \"bearer\",\n    \"expires_on\": 1580813210,\n    \"id_token\": \"<id_token>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create a partner tenant",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"partner_tenant_id\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Cyber Files Partner\",\r\n    \"parent_id\": \"{{my_tenant_id}}\",\r\n    \"kind\": \"partner\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/2/tenants",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"tenants"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Partner Tenant",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"MyFirstPartner\",\r\n    \"parent_id\": \"{{my_tenant_id}}\",\r\n    \"kind\": \"partner\"\r\n  }"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/2/tenants",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"2",
+										"tenants"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Feb 2020 09:01:35 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "578"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "585a9b3c465cceed68f76ccde7733870"
+								},
+								{
+									"key": "X-Int-Request-Id",
+									"value": "mPR73kK6pjY64GEcYUQp3Y"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"language\": \"en\",\n    \"update_lock\": {\n        \"owner_id\": null,\n        \"enabled\": false\n    },\n    \"internal_tag\": null,\n    \"has_children\": false,\n    \"customer_id\": null,\n    \"customer_type\": \"default\",\n    \"version\": 1,\n    \"kind\": \"partner\",\n    \"name\": \"MyFirstPartner\",\n    \"default_idp_id\": \"11111111-1111-1111-1111-111111111111\",\n    \"ancestral_access\": true,\n    \"id\": \"e1607243-3892-4ee7-90ab-abe6a1af1188\",\n    \"owner_id\": null,\n    \"brand_id\": 5672,\n    \"contact\": {\n        \"zipcode\": null,\n        \"lastname\": \"\",\n        \"state\": null,\n        \"city\": null,\n        \"phone\": null,\n        \"country\": null,\n        \"email\": \"\",\n        \"firstname\": \"\",\n        \"address2\": null,\n        \"address1\": null\n    },\n    \"parent_id\": \"53b471e1-50dd-4557-ae6d-f687946821d4\",\n    \"enabled\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Set only Cyber Files for the parter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"offering_items\": [\r\n        {\r\n            \"name\": \"fc_storage\",\r\n            \"infra_id\": \"fbc254b9-d8be-4daf-94f6-0253d23b63f0\",\r\n            \"usage_name\": \"fc_storage\",\r\n            \"quota\": {\r\n                \"value\": null,\r\n                \"version\": 0,\r\n                \"overage\": null\r\n            },\r\n            \"application_id\": \"dfd85a5f-a464-32ab-81fd-99bcc66a070f\",\r\n            \"type\": \"infra\",\r\n            \"edition\": null,\r\n            \"locked\": false,\r\n            \"measurement_unit\": \"bytes\",\r\n            \"status\": 1\r\n        },\r\n        {\r\n            \"name\": \"fc_seats\",\r\n            \"usage_name\": \"fc_seats\",\r\n            \"quota\": {\r\n                \"value\": null,\r\n                \"version\": 0,\r\n                \"overage\": null\r\n            },\r\n            \"application_id\": \"dfd85a5f-a464-32ab-81fd-99bcc66a070f\",\r\n            \"type\": \"count\",\r\n            \"edition\": null,\r\n            \"locked\": true,\r\n            \"measurement_unit\": \"quantity\",\r\n            \"status\": 1\r\n        },\r\n        {\r\n            \"name\": \"fc_child_storages\",\r\n            \"usage_name\": \"fc_child_storages\",\r\n            \"quota\": {\r\n                \"value\": null,\r\n                \"version\": 0,\r\n                \"overage\": null\r\n            },\r\n            \"application_id\": \"dfd85a5f-a464-32ab-81fd-99bcc66a070f\",\r\n            \"type\": \"count\",\r\n            \"edition\": null,\r\n            \"locked\": false,\r\n            \"measurement_unit\": \"bytes\",\r\n            \"status\": 1\r\n        }    \r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/2/tenants/{{partner_tenant_id}}/offering_items",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"tenants",
+								"{{partner_tenant_id}}",
+								"offering_items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a customer tenant",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"customer_tenant_id\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Cyber Files Customer\",\r\n    \"parent_id\": \"{{partner_tenant_id}}\",\r\n    \"kind\": \"Customer\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/2/tenants",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"tenants"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Partner Tenant",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"MyFirstPartner\",\r\n    \"parent_id\": \"{{my_tenant_id}}\",\r\n    \"kind\": \"partner\"\r\n  }"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/2/tenants",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"2",
+										"tenants"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Feb 2020 09:01:35 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "578"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "585a9b3c465cceed68f76ccde7733870"
+								},
+								{
+									"key": "X-Int-Request-Id",
+									"value": "mPR73kK6pjY64GEcYUQp3Y"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"language\": \"en\",\n    \"update_lock\": {\n        \"owner_id\": null,\n        \"enabled\": false\n    },\n    \"internal_tag\": null,\n    \"has_children\": false,\n    \"customer_id\": null,\n    \"customer_type\": \"default\",\n    \"version\": 1,\n    \"kind\": \"partner\",\n    \"name\": \"MyFirstPartner\",\n    \"default_idp_id\": \"11111111-1111-1111-1111-111111111111\",\n    \"ancestral_access\": true,\n    \"id\": \"e1607243-3892-4ee7-90ab-abe6a1af1188\",\n    \"owner_id\": null,\n    \"brand_id\": 5672,\n    \"contact\": {\n        \"zipcode\": null,\n        \"lastname\": \"\",\n        \"state\": null,\n        \"city\": null,\n        \"phone\": null,\n        \"country\": null,\n        \"email\": \"\",\n        \"firstname\": \"\",\n        \"address2\": null,\n        \"address1\": null\n    },\n    \"parent_id\": \"53b471e1-50dd-4557-ae6d-f687946821d4\",\n    \"enabled\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Set only Cyber Files for the parter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"offering_items\": [\r\n        {\r\n            \"name\": \"fc_storage\",\r\n            \"infra_id\": \"fbc254b9-d8be-4daf-94f6-0253d23b63f0\",\r\n            \"usage_name\": \"fc_storage\",\r\n            \"quota\": {\r\n                \"value\": null,\r\n                \"version\": 0,\r\n                \"overage\": null\r\n            },\r\n            \"application_id\": \"dfd85a5f-a464-32ab-81fd-99bcc66a070f\",\r\n            \"type\": \"infra\",\r\n            \"edition\": null,\r\n            \"locked\": false,\r\n            \"measurement_unit\": \"bytes\",\r\n            \"status\": 1\r\n        },\r\n        {\r\n            \"name\": \"fc_seats\",\r\n            \"usage_name\": \"fc_seats\",\r\n            \"quota\": {\r\n                \"value\": null,\r\n                \"version\": 0,\r\n                \"overage\": null\r\n            },\r\n            \"application_id\": \"dfd85a5f-a464-32ab-81fd-99bcc66a070f\",\r\n            \"type\": \"count\",\r\n            \"edition\": null,\r\n            \"locked\": true,\r\n            \"measurement_unit\": \"quantity\",\r\n            \"status\": 1\r\n        }    \r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/2/tenants/{{customer_tenant_id}}/offering_items",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"tenants",
+								"{{customer_tenant_id}}",
+								"offering_items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new user for a customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"user_id\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"tenant_id\": \"{{customer_tenant_id}}\",\r\n  \"login\": \"{{login}}\",\r\n  \"contact\": {\r\n      \"email\": \"{{login}}@example.com\",\r\n      \"firstname\": \"First{{login}}\",\r\n      \"lastname\": \"Last{{login}}\"\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/2/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create a new user for a customer",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"tenant_id\": \"{{customer_tenant_id}}\",\r\n  \"login\": \"{{login}}\",\r\n  \"contact\": {\r\n      \"email\": \"{{login}}@example.com\",\r\n      \"firstname\": \"First={{login}}\",\r\n      \"lastname\": \"Last-{{login}}\"\r\n  }\r\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/2/users",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"2",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Feb 2020 09:53:56 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "353442c45d00ebd1b01fd99370ec5897"
+								},
+								{
+									"key": "X-Int-Request-Id",
+									"value": "KoCYe6Thv7juJs7UT2E46F"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"mfa_status\": \"disabled\",\n    \"tenant_id\": \"886edd90-60f7-474a-8553-3be7db4daf8c\",\n    \"language\": \"en\",\n    \"personal_tenant_id\": \"2f7e2fcd-81ab-4c55-8fe8-f28dc5704ea5\",\n    \"business_types\": [],\n    \"idp_id\": \"11111111-1111-1111-1111-111111111111\",\n    \"created_at\": \"2020-02-04T09:53:56.175938+00:00\",\n    \"enabled\": true,\n    \"version\": 1,\n    \"notifications\": [\n        \"quota\",\n        \"reports\",\n        \"backup_daily_report\"\n    ],\n    \"activated\": false,\n    \"id\": \"8630bd54-6707-4f2c-8220-23a351b2097d\",\n    \"contact\": {\n        \"zipcode\": null,\n        \"lastname\": \"Last-stas.test.2012\",\n        \"state\": null,\n        \"city\": null,\n        \"phone\": null,\n        \"country\": null,\n        \"email\": \"stas.test.2012@example.com\",\n        \"firstname\": \"First=stas.test.2012\",\n        \"address2\": null,\n        \"address1\": null\n    },\n    \"login\": \"stas.test.2012\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Activate a user by setting a password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"password\": \"{{user_password}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/2/users/{{user_id}}/password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"users",
+								"{{user_id}}",
+								"password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Activate a user by setting a password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"password\": \"MyStrongP@ssw0rd\"\r\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/2/users/{{user_id}}/password",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"2",
+										"users",
+										"{{user_id}}",
+										"password"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Feb 2020 09:56:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "2477292647964b74f63c4f3a4758e4e2"
+								},
+								{
+									"key": "X-Int-Request-Id",
+									"value": "AVFqd2Y6jtrQ5FKL6BCRG3"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Set a user the Cyber Files user role",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"items\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"issuer_id\": \"00000000-0000-0000-0000-000000000000\",\n            \"role_id\": \"sync_share_admin\",\n            \"tenant_id\": \"{{customer_tenant_id}}\",\n            \"trustee_id\": \"{{user_id}}\",\n            \"trustee_type\": \"user\",\n            \"version\": 0\n        },\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"issuer_id\": \"00000000-0000-0000-0000-000000000000\",\n            \"role_id\": \"sync_share_user\",\n            \"tenant_id\": \"{{customer_tenant_id}}\",\n            \"trustee_id\": \"{{user_id}}\",\n            \"trustee_type\": \"user\",\n            \"version\": 0\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/2/users/{{user_id}}/access_policies",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"users",
+								"{{user_id}}",
+								"access_policies"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Set a user roles",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"items\": [{\"id\": \"00000000-0000-0000-0000-000000000000\",\r\n            \"issuer_id\": \"00000000-0000-0000-0000-000000000000\",\r\n            \"role_id\": \"backup_user\",\r\n            \"tenant_id\": \"{{user_personal_tenant_id}}\",\r\n            \"trustee_id\": \"{{user_id}}\",\r\n            \"trustee_type\": \"user\",\r\n            \"version\": 0}]}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/2/users/{{user_id}}/access_policies",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"2",
+										"users",
+										"{{user_id}}",
+										"access_policies"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 19 Feb 2020 19:29:27 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "6a0e43fa68f22c15277aa5eb81b951a3"
+								},
+								{
+									"key": "X-Int-Request-Id",
+									"value": "FLhMjB8J6Uc7joqiacWnmd"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"items\": [\n        {\n            \"role_id\": \"backup_user\",\n            \"trustee_id\": \"4444183f-c3f7-4c87-beda-d223d1eb2723\",\n            \"version\": 0,\n            \"trustee_type\": \"user\",\n            \"tenant_id\": \"e4a4fae8-22a1-4e81-aacb-c34d8fe0ec36\",\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"issuer_id\": \"00000000-0000-0000-0000-000000000000\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Issue a JWT token for Cyber Files API Calls",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"access_token\", jsonData.access_token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{client_id}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "{{login}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{user_password}}",
+									"type": "text"
+								},
+								{
+									"key": "totp_code",
+									"value": "123456",
+									"description": "The Time-based One-Time Password (TOTP) code required for accounts with two-factor authentication (2FA) enabled. ",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/2/idp/token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"idp",
+								"token"
+							]
+						},
+						"description": "For Cyber Files API other type of grant type than for Account Management API. It must be grant_type equals password."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a user info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"user_uuid\", jsonData.uuid);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/fc/api/v1/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fc",
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get a user info",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{base_url}}/fc/api/v1/users/{{user_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"fc",
+										"api",
+										"v1",
+										"users",
+										"{{user_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Jul 2020 13:16:08 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-flash",
+									"value": "%7B%7D"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"abff22b2ed572ac35e0e5baa04df4833\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "rest_access_token=gB8B3oLDqZLoabbXIQhKFyJlFSCMopz%2B%2B%2FkIf6xsFWqCRZAj4oKplVmj1QJZ7TH8HQQ8yRI4nOgqdrCHd4yFIQ%3D%3D; path=/; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "ad8d89f9d121d888984fde1bb9dbc1bd"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.040972"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"Stanislav Pavlov\",\n    \"email\": \"stanislav.i.pavlov+demos@gmail.com\",\n    \"uuid\": \"ecaa110b7-28f4-4935-8f29-8065414442c3\",\n    \"group_id\": null,\n    \"allow_sync_and_share\": false,\n    \"can_manage_mobile_data_sources\": true,\n    \"can_manage_mobile_policies\": true,\n    \"can_manage_users\": true,\n    \"can_view_audit_log\": true,\n    \"can_access_forensic_api\": false,\n    \"disabled\": false,\n    \"free_space_to_maintain\": 0,\n    \"is_superuser\": true,\n    \"ldap_authentication\": false,\n    \"licensed\": true,\n    \"locale\": \"en\",\n    \"provisioned_admin\": false,\n    \"purge_proactively\": false,\n    \"pending\": false,\n    \"override_quota\": null,\n    \"quota\": null,\n    \"sid\": null,\n    \"upn\": null,\n    \"domain\": null,\n    \"login_name\": null,\n    \"login_url\": \"https://dev-cloud.acronis.com/fc/signin?email=stanislav.i.pavlov%2Bdemos%40gmail.com\",\n    \"confirmed_at\": \"2020-05-21T10:39:52Z\",\n    \"updated_at\": \"2020-07-28T13:16:08Z\",\n    \"created_at\": \"2020-05-21T10:39:52Z\",\n    \"deleted_at\": null,\n    \"last_logged_in_at\": \"2020-07-28T13:16:08Z\",\n    \"mobile_phone_number\": null,\n    \"ldap_mobile_phone_number\": null,\n    \"can_mobile_phone_number_be_changed\": true,\n    \"override_quota_in_gb\": null,\n    \"quota_in_mb\": null,\n    \"free_space_to_maintain_mb\": 0,\n    \"sync_and_share_content\": {\n        \"file_count\": 0,\n        \"folder_count\": 0,\n        \"used_space\": 0\n    },\n    \"policy\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Create a folder",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"parent_folder_uuid\", jsonData.uuid);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Cyber Folder 1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/fc/api/v1/sync_and_share_nodes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fc",
+								"api",
+								"v1",
+								"sync_and_share_nodes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create a folder",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Cyber Folder 1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/fc/api/v1/sync_and_share_nodes",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"fc",
+										"api",
+										"v1",
+										"sync_and_share_nodes"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Jul 2020 14:37:42 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-flash",
+									"value": "%7B%7D"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"76710acf643ab37ff93568cfc74b829b\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "587d83d052140ebd425e1886d59c3655"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.153707"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"uuid\": \"0f17ceb3-74a8-4da4-8d46-2b345c5e619b\",\n    \"name\": \"Cyber Folder 1\",\n    \"is_directory\": true,\n    \"size\": null,\n    \"file_modification_date\": \"2020-07-28T14:37:42Z\",\n    \"is_deleted\": false,\n    \"synced\": \"sync_2_way\",\n    \"preview_type\": null,\n    \"expiration_date\": null,\n    \"has_revisions\": true,\n    \"has_deleted\": true,\n    \"read_only\": false,\n    \"has_active_links\": false,\n    \"has_shared_child_nodes\": false,\n    \"is_shared\": false,\n    \"owner_email\": \"cyber.files.test@example.com\",\n    \"can_be_streamed\": true,\n    \"path\": \"Cyber Folder 1\",\n    \"volume\": {\n        \"id\": \"\",\n        \"name\": \"Sync & Share\"\n    },\n    \"parents\": [\n        {\n            \"name\": \"Sync & Share\",\n            \"uuid\": \"0\",\n            \"is_root\": true\n        },\n        {\n            \"name\": \"Cyber Folder 1\",\n            \"uuid\": \"0f17ceb3-74a8-4da4-8d46-2b345c5e619b\",\n            \"is_root\": false\n        }\n    ],\n    \"type\": \"sync-and-share\",\n    \"checksum\": \"\",\n    \"parent_uuid\": \"0\",\n    \"has_writable_children\": true,\n    \"revision\": 1,\n    \"office_online_permissions\": {\n        \"can_create_files_into\": false,\n        \"can_be_previewed\": false,\n        \"can_be_edited\": false\n    },\n    \"owner\": {\n        \"uuid\": \"e68fd8f1-1ab9-46fd-a86f-830266e2678d\",\n        \"name\": \"Firstcyber.files.test Lastcyber.files.test\",\n        \"email\": \"cyber.files.test@example.com\"\n    },\n    \"permissions\": {\n        \"can_be_renamed\": true,\n        \"can_be_unsubscribed\": false,\n        \"can_be_restored\": false,\n        \"can_create_folders_into\": true,\n        \"can_be_copied\": true,\n        \"can_create_files_into\": true,\n        \"can_view_members\": true,\n        \"can_be_synced_2_way\": true,\n        \"can_be_deleted\": true,\n        \"can_be_synced_1_way\": false,\n        \"can_be_moved\": true,\n        \"can_be_shared\": true,\n        \"can_be_shared_via_link\": false,\n        \"can_invite\": true,\n        \"can_be_downloaded\": true,\n        \"can_selectively_purge_revisions\": false,\n        \"can_be_notarized\": false\n    },\n    \"actions\": {\n        \"download\": \"/fc/api/v1/sync_and_share_nodes/0f17ceb3-74a8-4da4-8d46-2b345c5e619b/download\",\n        \"upload\": \"/fc/api/v1/sync_and_share_nodes/0f17ceb3-74a8-4da4-8d46-2b345c5e619b/upload\",\n        \"preview\": null\n    },\n    \"latest_notarized_revision\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Create a sub-folder",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"sub_folder_uuid\", jsonData.uuid);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Cyber Folder 2\",\r\n    \"parent_uuid\": \"{{parent_folder_uuid}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/fc/api/v1/sync_and_share_nodes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fc",
+								"api",
+								"v1",
+								"sync_and_share_nodes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload a File",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"file_uuid\", jsonData.uuid);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "19",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "text/plain",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Cyber File API Test",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/fc/api/v1/sync_and_share_nodes/{{sub_folder_uuid}}/upload?filename=test.txt&size=19",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fc",
+								"api",
+								"v1",
+								"sync_and_share_nodes",
+								"{{sub_folder_uuid}}",
+								"upload"
+							],
+							"query": [
+								{
+									"key": "filename",
+									"value": "test.txt"
+								},
+								{
+									"key": "size",
+									"value": "19"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Upload a File",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Length",
+										"value": "19",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "text/plain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "Cyber File API Test",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/fc/api/v1/sync_and_share_nodes/{{sub_folder_uuid}}/upload?filename=test.txt&size=19",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"fc",
+										"api",
+										"v1",
+										"sync_and_share_nodes",
+										"{{sub_folder_uuid}}",
+										"upload"
+									],
+									"query": [
+										{
+											"key": "filename",
+											"value": "test.txt"
+										},
+										{
+											"key": "size",
+											"value": "19"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Jul 2020 16:03:41 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-flash",
+									"value": "%7B%7D"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f3b21687844fad6bcd00ba46a212f3c2\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "a8cc45345c8b493973d049ec677f4cc3"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.199515"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"uuid\": \"70191279-28cd-43bb-a959-7f24323a2d7c\",\n    \"name\": \"test.txt\",\n    \"is_directory\": false,\n    \"size\": 19,\n    \"file_modification_date\": \"2020-07-28T16:02:08Z\",\n    \"is_deleted\": false,\n    \"synced\": \"sync_2_way\",\n    \"preview_type\": \"text\",\n    \"expiration_date\": null,\n    \"has_revisions\": true,\n    \"has_deleted\": true,\n    \"read_only\": false,\n    \"has_active_links\": false,\n    \"has_shared_child_nodes\": false,\n    \"is_shared\": false,\n    \"owner_email\": \"cyber.files.test@example.com\",\n    \"can_be_streamed\": true,\n    \"path\": \"Cyber Folder 1/Cyber Folder 2/test.txt\",\n    \"volume\": {\n        \"id\": \"\",\n        \"name\": \"Sync & Share\"\n    },\n    \"parents\": [\n        {\n            \"name\": \"Sync & Share\",\n            \"uuid\": \"0\",\n            \"is_root\": true\n        },\n        {\n            \"name\": \"Cyber Folder 1\",\n            \"uuid\": \"be2a68c1-bd5a-4a10-800f-718a333bf61e\",\n            \"is_root\": false\n        },\n        {\n            \"name\": \"Cyber Folder 2\",\n            \"uuid\": \"20c71152-a77d-461c-ae2c-77c5836286bb\",\n            \"is_root\": false\n        },\n        {\n            \"name\": \"test.txt\",\n            \"uuid\": \"70191279-28cd-43bb-a959-7f24323a2d7c\",\n            \"is_root\": false\n        }\n    ],\n    \"type\": \"sync-and-share\",\n    \"checksum\": \"502d9655ec805a734383996d82594b50\",\n    \"parent_uuid\": \"20c71152-a77d-461c-ae2c-77c5836286bb\",\n    \"has_writable_children\": false,\n    \"revision\": 1,\n    \"office_online_permissions\": {\n        \"can_create_files_into\": false,\n        \"can_be_previewed\": false,\n        \"can_be_edited\": false\n    },\n    \"owner\": {\n        \"uuid\": \"28818493-42b1-4f65-b774-9de04a25a900\",\n        \"name\": \"Firstcyber.files.test Lastcyber.files.test\",\n        \"email\": \"cyber.files.test@example.com\"\n    },\n    \"permissions\": {\n        \"can_be_renamed\": true,\n        \"can_be_unsubscribed\": false,\n        \"can_be_restored\": false,\n        \"can_create_folders_into\": false,\n        \"can_be_copied\": true,\n        \"can_create_files_into\": false,\n        \"can_view_members\": true,\n        \"can_be_synced_2_way\": false,\n        \"can_be_deleted\": true,\n        \"can_be_synced_1_way\": false,\n        \"can_be_moved\": true,\n        \"can_be_shared\": true,\n        \"can_be_shared_via_link\": true,\n        \"can_invite\": true,\n        \"can_be_downloaded\": true,\n        \"can_selectively_purge_revisions\": false,\n        \"can_be_notarized\": false\n    },\n    \"actions\": {\n        \"download\": \"/fc/api/v1/sync_and_share_nodes/70191279-28cd-43bb-a959-7f24323a2d7c/download\",\n        \"upload\": null,\n        \"preview\": \"/fc/api/v1/sync_and_share_nodes/70191279-28cd-43bb-a959-7f24323a2d7c/preview\"\n    },\n    \"latest_notarized_revision\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Download the sub folder  ZIP archive",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/fc/api/v1/sync_and_share_nodes/{{sub_folder_uuid}}/download",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fc",
+								"api",
+								"v1",
+								"sync_and_share_nodes",
+								"{{sub_folder_uuid}}",
+								"download"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download the file",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/fc/api/v1/sync_and_share_nodes/{{file_uuid}}/download",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fc",
+								"api",
+								"v1",
+								"sync_and_share_nodes",
+								"{{file_uuid}}",
+								"download"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Download the file",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/fc/api/v1/sync_and_share_nodes/{{file_uuid}}/download",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"fc",
+										"api",
+										"v1",
+										"sync_and_share_nodes",
+										"{{file_uuid}}",
+										"download"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "raw",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Jul 2020 16:02:34 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/octet-stream"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Content-Disposition",
+									"value": "attachment; filename=\"test.txt\"; filename*=utf-8''test.txt"
+								},
+								{
+									"key": "Content-Transfer-Encoding",
+									"value": "binary"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, no-cache, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Expires",
+									"value": "Fri, 01 Jan 1990 00:00:00 GMT"
+								},
+								{
+									"key": "x-flash",
+									"value": "%7B%7D"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "rest_access_token=M6AuezcQzDvwJpMnn0mgOmDt%2FkdiCUR9vj5GmWX6RfXJgGAYpnMDspJNLrxjHeQ7cbWPRbafcaOVMDbMdTAcZw%3D%3D; path=/; SameSite=Lax"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "68a2f6db2cfb5c4caf2f71d064cd9497"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.060160"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "Cyber File API Test"
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.request.headers.add({key: 'User-Agent', value: 'ACP 1.0/Acronis Cyber Files API' })"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

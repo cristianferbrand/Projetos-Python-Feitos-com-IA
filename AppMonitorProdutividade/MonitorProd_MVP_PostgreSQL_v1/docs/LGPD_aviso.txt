@@ -1,0 +1,10 @@
+AVISO DE PRIVACIDADE E MONITORAMENTO
+Este sistema coleta: janela/processo ativos, duração e miniaturas (com desfoque configurável).
+Finalidade: gerir produtividade e auditoria de uso de software corporativo.
+Consentimento: os colaboradores devem ser informados e consentir conforme LGPD.
+Boas práticas:
+- Escopo mínimo (sem conteúdo sensível)
+- Blur de screenshots por padrão
+- Lista de bloqueio (bancos, e-mail pessoal, mensageria, etc.)
+- Acesso restrito ao painel
+- Retenção limitada e backups seguros

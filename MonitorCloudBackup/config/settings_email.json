@@ -1,0 +1,19 @@
+{
+  "DATABASE_URL": "",
+  "SMTP_HOST": "smtp.gmail.com",
+  "SMTP_PORT": 587,
+  "SMTP_USE_TLS": true,
+  "SMTP_USE_SSL": false,
+  "SMTP_USERNAME": "cristianferhos@gmail.com",
+  "SMTP_PASSWORD": "wzydqzeeicejhltz",
+  "SMTP_FROM": "cristianferhos@gmail.com",
+  "DEFAULT_MAIL_TO": "cristianferbrand@gmail.com",
+  "DEFAULT_MAIL_CC": "",
+  "DEFAULT_MAIL_BCC": "",
+  "SUBJECT_TEMPLATE": "{Cliente} - {Mensagem}",
+  "BODY_TEMPLATE": "Alerta: {Tipo do alerta}\nSeveridade: {Severidade}\nCliente: {Cliente}\nCarga de trabalho: {Carga de trabalho}\nPlano: {Plano}\nUltimo Backup: {Data e hora}\n\nMensagem:\n{Mensagem}",
+  "RATE_LIMIT_MS": 200,
+  "LOG_TO_FILE": false,
+  "LOG_DIR": "logs",
+  "LOG_BASENAME": "email_sender"
+}

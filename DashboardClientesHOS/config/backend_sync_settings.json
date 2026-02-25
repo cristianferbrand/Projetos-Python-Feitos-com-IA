@@ -1,0 +1,17 @@
+{
+  "firebird": {
+    "dsn": "192.168.1.9/3050:crm_hos",
+    "user": "SYSDBA",
+    "password": "had63rg@",
+    "charset": "WIN1252",
+    "fbclient_path": "C:\\Program Files\\Firebird\\Firebird_2_5\\bin\\fbclient.dll"
+  },
+  "postgres": {
+    "host": "127.0.0.1",
+    "port": 5432,
+    "dbname": "mapacliente",
+    "user": "hos_app",
+    "password": "hos26214400"
+  },
+  "schema": "public"
+}

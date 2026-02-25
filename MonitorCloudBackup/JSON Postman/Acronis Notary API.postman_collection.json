@@ -1,0 +1,2319 @@
+{
+	"info": {
+		"_postman_id": "62bce616-4bb8-4814-8b86-331bc0faf505",
+		"name": "Acronis Notary API",
+		"description": "Enables notarization, electronic signature, and authenticity verification of files and JSON objects of any size by using the Ethereum blockchain.\n\nUsage Guide [https://developer.acronis.com/doc/notary/v2/guide/](https://developer.acronis.com/doc/notary/v2/guide/)\n\nFull Reference [https://developer.acronis.com/doc/notary/v2/reference/](https://developer.acronis.com/doc/notary/v2/reference/)\n\nCopyright © 2019-2024 Acronis International GmbH. This is distributed under MIT license.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48727415",
+		"_collection_link": "https://www.postman.com/grey-rocket-585331/acronis-cyber-platform-s-public-workspace/collection/iw3it3n/acronis-notary-api?action=share&source=collection_link&creator=48727415"
+	},
+	"item": [
+		{
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "Create API Client",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"type\": \"api_client\",\r\n\t\"tenant_id\": \"{{my_tenant_id}}\",\r\n\t\"token_endpoint_auth_method\": \"client_secret_basic\",\r\n\t\"data\": {\r\n\t\t\"client_name\": \"API.Client\"\r\n\t}\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/2/clients",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"clients"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create API Client",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"type\": \"agent\",\r\n\t\"tenant_id\": \"{{my_tenant_id}}\",\r\n\t\"token_endpoint_auth_method\": \"client_secret_basic\",\r\n\t\"data\": {\r\n\t\t\"client_name\": \"API.Client\"\r\n\t}\r\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/2/clients",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"2",
+										"clients"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Feb 2020 11:20:39 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "479"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "f39d584f0cff42b0e5b66448c3947ccb"
+								},
+								{
+									"key": "X-Int-Request-Id",
+									"value": "bUW6jbo8aJ6NgqnxPTsdZ7"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token_endpoint_auth_method\": \"client_secret_basic\",\n    \"created_by\": \"bfa9d672-35ee-4cad-b987-024d145f7fe3\",\n    \"redirect_uris\": [],\n    \"data\": {\n        \"client_name\": \"API.Client\"\n    },\n    \"status\": \"enabled\",\n    \"created_at\": \"2020-02-26T11:20:39+00:00\",\n    \"tenant_id\": \"53b471e1-50dd-4557-ae6d-f687923121d4\",\n    \"client_secret\": \"aa6f81cb2b7f4306aeeb16815ea71ef3\",\n    \"registration_access_token\": \"5fef399909ca48929c9e8d04350af3e1\",\n    \"type\": \"agent\",\n    \"client_id\": \"c5597043-98ed-4474-ad09-d90a34513651\",\n    \"client_secret_expires_at\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Issue a JWT token for Account Management API Calls",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"access_token\", jsonData.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{client_id}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"name": "Content-Type",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/2/idp/token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"idp",
+								"token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Issue a JWT Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"name": "Content-Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/2/idp/token",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"2",
+										"idp",
+										"token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Feb 2020 08:46:50 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "7b0cb0506c137a4ba40b76756ad27c12"
+								},
+								{
+									"key": "X-Int-Request-Id",
+									"value": "pba9djkgyxDK69dYwvCN2F"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"<access_token>\",\n    \"token_type\": \"bearer\",\n    \"expires_on\": 1580813210,\n    \"id_token\": \"<id_token>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Issue a JWT token for Cyber Notry API Calls",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"access_token\", jsonData.access_token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{client_id}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "text"
+								},
+								{
+									"key": "totp_code",
+									"value": "123456",
+									"description": "The Time-based One-Time Password (TOTP) code required for accounts with two-factor authentication (2FA) enabled. ",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/2/idp/token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"idp",
+								"token"
+							]
+						},
+						"description": "For Cyber Files API other type of grant type than for Account Management API. It must be grant_type equals password."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Documents",
+			"item": [
+				{
+					"name": "Get documents",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/notary/api/v2/documents",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notary",
+								"api",
+								"v2",
+								"documents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all stored files",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/notary/api/v2/stored-files?limit=100&order=desc(created_at)",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notary",
+								"api",
+								"v2",
+								"stored-files"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "100"
+								},
+								{
+									"key": "order",
+									"value": "desc(created_at)"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Keys",
+			"item": [
+				{
+					"name": "Get Keys",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/notary/api/v2/keys",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notary",
+								"api",
+								"v2",
+								"keys"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Runner: Create a partner, a customer, a user and assign a user Cyber Notary user role",
+			"item": [
+				{
+					"name": "Issue a JWT token for Account Management API Calls",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"access_token\", jsonData.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{client_id}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"name": "Content-Type",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/2/idp/token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"idp",
+								"token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Issue a JWT Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"name": "Content-Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/2/idp/token",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"2",
+										"idp",
+										"token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Feb 2020 08:46:50 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "7b0cb0506c137a4ba40b76756ad27c12"
+								},
+								{
+									"key": "X-Int-Request-Id",
+									"value": "pba9djkgyxDK69dYwvCN2F"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"<access_token>\",\n    \"token_type\": \"bearer\",\n    \"expires_on\": 1580813210,\n    \"id_token\": \"<id_token>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create a partner tenant",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"partner_tenant_id\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Cyber Notary Partner\",\r\n    \"parent_id\": \"{{my_tenant_id}}\",\r\n    \"kind\": \"partner\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/2/tenants",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"tenants"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Partner Tenant",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"MyFirstPartner\",\r\n    \"parent_id\": \"{{my_tenant_id}}\",\r\n    \"kind\": \"partner\"\r\n  }"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/2/tenants",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"2",
+										"tenants"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Feb 2020 09:01:35 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "578"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "585a9b3c465cceed68f76ccde7733870"
+								},
+								{
+									"key": "X-Int-Request-Id",
+									"value": "mPR73kK6pjY64GEcYUQp3Y"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"language\": \"en\",\n    \"update_lock\": {\n        \"owner_id\": null,\n        \"enabled\": false\n    },\n    \"internal_tag\": null,\n    \"has_children\": false,\n    \"customer_id\": null,\n    \"customer_type\": \"default\",\n    \"version\": 1,\n    \"kind\": \"partner\",\n    \"name\": \"MyFirstPartner\",\n    \"default_idp_id\": \"11111111-1111-1111-1111-111111111111\",\n    \"ancestral_access\": true,\n    \"id\": \"e1607243-3892-4ee7-90ab-abe6a1af1188\",\n    \"owner_id\": null,\n    \"brand_id\": 5672,\n    \"contact\": {\n        \"zipcode\": null,\n        \"lastname\": \"\",\n        \"state\": null,\n        \"city\": null,\n        \"phone\": null,\n        \"country\": null,\n        \"email\": \"\",\n        \"firstname\": \"\",\n        \"address2\": null,\n        \"address1\": null\n    },\n    \"parent_id\": \"53b471e1-50dd-4557-ae6d-f687946821d4\",\n    \"enabled\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Set only Cyber Files for the parter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"offering_items\": [\r\n        {\r\n            \"name\": \"notary_storage\",\r\n            \"usage_name\": \"notary_storage\",\r\n            \"quota\": {\r\n                \"value\": null,\r\n                \"version\": 0,\r\n                \"overage\": null\r\n            },\r\n            \"application_id\": \"f9c5744e-bd1a-36b6-b0f0-ecd7483e1796\",\r\n            \"type\": \"count\",\r\n            \"edition\": null,\r\n            \"locked\": false,\r\n            \"measurement_unit\": \"bytes\",\r\n            \"status\": 1\r\n        },\r\n        {\r\n            \"name\": \"notarizations\",\r\n            \"usage_name\": \"notarizations\",\r\n            \"quota\": {\r\n                \"value\": null,\r\n                \"version\": 0,\r\n                \"overage\": null\r\n            },\r\n            \"application_id\": \"f9c5744e-bd1a-36b6-b0f0-ecd7483e1796\",\r\n            \"type\": \"count\",\r\n            \"edition\": null,\r\n            \"locked\": false,\r\n            \"measurement_unit\": \"quantity\",\r\n            \"status\": 1\r\n        },\r\n        {\r\n            \"name\": \"esignatures\",\r\n            \"usage_name\": \"esignatures\",\r\n            \"quota\": {\r\n                \"value\": null,\r\n                \"version\": 0,\r\n                \"overage\": null\r\n            },\r\n            \"application_id\": \"f9c5744e-bd1a-36b6-b0f0-ecd7483e1796\",\r\n            \"type\": \"count\",\r\n            \"edition\": null,\r\n            \"locked\": false,\r\n            \"measurement_unit\": \"quantity\",\r\n            \"status\": 1\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/2/tenants/{{partner_tenant_id}}/offering_items",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"tenants",
+								"{{partner_tenant_id}}",
+								"offering_items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a customer tenant",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"customer_tenant_id\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Cyber Notary Customer\",\r\n    \"parent_id\": \"{{partner_tenant_id}}\",\r\n    \"kind\": \"Customer\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/2/tenants",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"tenants"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Partner Tenant",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"MyFirstPartner\",\r\n    \"parent_id\": \"{{my_tenant_id}}\",\r\n    \"kind\": \"partner\"\r\n  }"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/2/tenants",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"2",
+										"tenants"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Feb 2020 09:01:35 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "578"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "585a9b3c465cceed68f76ccde7733870"
+								},
+								{
+									"key": "X-Int-Request-Id",
+									"value": "mPR73kK6pjY64GEcYUQp3Y"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"language\": \"en\",\n    \"update_lock\": {\n        \"owner_id\": null,\n        \"enabled\": false\n    },\n    \"internal_tag\": null,\n    \"has_children\": false,\n    \"customer_id\": null,\n    \"customer_type\": \"default\",\n    \"version\": 1,\n    \"kind\": \"partner\",\n    \"name\": \"MyFirstPartner\",\n    \"default_idp_id\": \"11111111-1111-1111-1111-111111111111\",\n    \"ancestral_access\": true,\n    \"id\": \"e1607243-3892-4ee7-90ab-abe6a1af1188\",\n    \"owner_id\": null,\n    \"brand_id\": 5672,\n    \"contact\": {\n        \"zipcode\": null,\n        \"lastname\": \"\",\n        \"state\": null,\n        \"city\": null,\n        \"phone\": null,\n        \"country\": null,\n        \"email\": \"\",\n        \"firstname\": \"\",\n        \"address2\": null,\n        \"address1\": null\n    },\n    \"parent_id\": \"53b471e1-50dd-4557-ae6d-f687946821d4\",\n    \"enabled\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Set only Cyber Notary for the parter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"offering_items\": [\r\n        {\r\n            \"name\": \"notary_storage\",\r\n            \"usage_name\": \"notary_storage\",\r\n            \"quota\": {\r\n                \"value\": null,\r\n                \"version\": 0,\r\n                \"overage\": null\r\n            },\r\n            \"application_id\": \"f9c5744e-bd1a-36b6-b0f0-ecd7483e1796\",\r\n            \"type\": \"count\",\r\n            \"edition\": null,\r\n            \"locked\": false,\r\n            \"measurement_unit\": \"bytes\",\r\n            \"status\": 1\r\n        },\r\n        {\r\n            \"name\": \"notarizations\",\r\n            \"usage_name\": \"notarizations\",\r\n            \"quota\": {\r\n                \"value\": null,\r\n                \"version\": 0,\r\n                \"overage\": null\r\n            },\r\n            \"application_id\": \"f9c5744e-bd1a-36b6-b0f0-ecd7483e1796\",\r\n            \"type\": \"count\",\r\n            \"edition\": null,\r\n            \"locked\": false,\r\n            \"measurement_unit\": \"quantity\",\r\n            \"status\": 1\r\n        },\r\n        {\r\n            \"name\": \"esignatures\",\r\n            \"usage_name\": \"esignatures\",\r\n            \"quota\": {\r\n                \"value\": null,\r\n                \"version\": 0,\r\n                \"overage\": null\r\n            },\r\n            \"application_id\": \"f9c5744e-bd1a-36b6-b0f0-ecd7483e1796\",\r\n            \"type\": \"count\",\r\n            \"edition\": null,\r\n            \"locked\": false,\r\n            \"measurement_unit\": \"quantity\",\r\n            \"status\": 1\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/2/tenants/{{customer_tenant_id}}/offering_items",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"tenants",
+								"{{customer_tenant_id}}",
+								"offering_items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new user for a customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"user_id\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"tenant_id\": \"{{customer_tenant_id}}\",\r\n  \"login\": \"{{login}}\",\r\n  \"contact\": {\r\n      \"email\": \"{{login}}@example.com\",\r\n      \"firstname\": \"First{{login}}\",\r\n      \"lastname\": \"Last{{login}}\"\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/2/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create a new user for a customer",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"tenant_id\": \"{{customer_tenant_id}}\",\r\n  \"login\": \"{{login}}\",\r\n  \"contact\": {\r\n      \"email\": \"{{login}}@example.com\",\r\n      \"firstname\": \"First={{login}}\",\r\n      \"lastname\": \"Last-{{login}}\"\r\n  }\r\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/2/users",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"2",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Feb 2020 09:53:56 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "353442c45d00ebd1b01fd99370ec5897"
+								},
+								{
+									"key": "X-Int-Request-Id",
+									"value": "KoCYe6Thv7juJs7UT2E46F"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"mfa_status\": \"disabled\",\n    \"tenant_id\": \"886edd90-60f7-474a-8553-3be7db4daf8c\",\n    \"language\": \"en\",\n    \"personal_tenant_id\": \"2f7e2fcd-81ab-4c55-8fe8-f28dc5704ea5\",\n    \"business_types\": [],\n    \"idp_id\": \"11111111-1111-1111-1111-111111111111\",\n    \"created_at\": \"2020-02-04T09:53:56.175938+00:00\",\n    \"enabled\": true,\n    \"version\": 1,\n    \"notifications\": [\n        \"quota\",\n        \"reports\",\n        \"backup_daily_report\"\n    ],\n    \"activated\": false,\n    \"id\": \"8630bd54-6707-4f2c-8220-23a351b2097d\",\n    \"contact\": {\n        \"zipcode\": null,\n        \"lastname\": \"Last-stas.test.2012\",\n        \"state\": null,\n        \"city\": null,\n        \"phone\": null,\n        \"country\": null,\n        \"email\": \"stas.test.2012@example.com\",\n        \"firstname\": \"First=stas.test.2012\",\n        \"address2\": null,\n        \"address1\": null\n    },\n    \"login\": \"stas.test.2012\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Activate a user by setting a password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"password\": \"{{user_password}}\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/2/users/{{user_id}}/password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"users",
+								"{{user_id}}",
+								"password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Activate a user by setting a password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"password\": \"MyStrongP@ssw0rd\"\r\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/2/users/{{user_id}}/password",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"2",
+										"users",
+										"{{user_id}}",
+										"password"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Feb 2020 09:56:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "2477292647964b74f63c4f3a4758e4e2"
+								},
+								{
+									"key": "X-Int-Request-Id",
+									"value": "AVFqd2Y6jtrQ5FKL6BCRG3"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Set a user the Cyber Notary user role",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"items\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"issuer_id\": \"00000000-0000-0000-0000-000000000000\",\n            \"role_id\": \"notary_admin\",\n            \"tenant_id\": \"{{customer_tenant_id}}\",\n            \"trustee_id\": \"{{user_id}}\",\n            \"trustee_type\": \"user\",\n            \"version\": 0\n        },\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"issuer_id\": \"00000000-0000-0000-0000-000000000000\",\n            \"role_id\": \"notary_user\",\n            \"tenant_id\": \"{{customer_tenant_id}}\",\n            \"trustee_id\": \"{{user_id}}\",\n            \"trustee_type\": \"user\",\n            \"version\": 0\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/2/users/{{user_id}}/access_policies",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"users",
+								"{{user_id}}",
+								"access_policies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Issue a JWT token for Cyber Notary API Calls",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"access_token\", jsonData.access_token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{client_id}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "{{login}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{user_password}}",
+									"type": "text"
+								},
+								{
+									"key": "totp_code",
+									"value": "123456",
+									"description": "The Time-based One-Time Password (TOTP) code required for accounts with two-factor authentication (2FA) enabled. ",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/2/idp/token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"idp",
+								"token"
+							]
+						},
+						"description": "For Cyber Files API other type of grant type than for Account Management API. It must be grant_type equals password."
+					},
+					"response": []
+				},
+				{
+					"name": "Notarize a file",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Temp/test.txt"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/notary/api/v2/files",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notary",
+								"api",
+								"v2",
+								"files"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Notarize a file",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Temp/test.txt"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/notary/api/v2/files",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"notary",
+										"api",
+										"v2",
+										"files"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Jul 2020 16:25:22 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"certificate_id\": \"b43ddf570a9ba9756f89eb61fbf1435f8d3e596c831b8f34b58f950aa2e69032\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Certificate for the file",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/notary/api/v2/certificates/{{certificate_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notary",
+								"api",
+								"v2",
+								"certificates",
+								"{{certificate_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Certificate",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/notary/api/v2/certificates/{{certificate_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"notary",
+										"api",
+										"v2",
+										"certificates",
+										"{{certificate_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Jul 2020 16:27:13 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"b43ddf570a9ba9756f89eb61fbf1435f8d3e596c831b8f34b58f950aa2e69032\",\n    \"object\": {\n        \"eTag\": \"137e4844d94859420f1df31d2cd5ff86a4a186c7f0af6d362b79f390ad6490d2\",\n        \"key\": \"test.txt\",\n        \"sequencer\": \"971cde47853f4b6189\",\n        \"size\": 19\n    },\n    \"eventtime\": \"2020-07-28T16:25:22.107761Z\",\n    \"merkle_root\": \"\",\n    \"merkle_proof\": \"\",\n    \"txid\": \"\",\n    \"contract\": \"\",\n    \"sender\": \"\",\n    \"timestamp\": 0,\n    \"version\": \"3\",\n    \"notarized_location\": \"beta-baas\",\n    \"signee_details\": {\n        \"first_name\": \"Firstcyber.notary.test\",\n        \"last_name\": \"Lastcyber.notary.test\",\n        \"tenant_name\": \"Cyber Notary Customer\",\n        \"tenant_id\": \"47246e47-45ec-4362-8d54-a5400bc2611f\"\n    },\n    \"qr_code\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAAABlBMVEX///8AAABVwtN+AAAECElEQVR42uzd227kKhCFYXj/l973oxhWYejear51k4lzsP1HqqkzjYiIiIiIiIiIiIiIiIiIqA/01/eOPo7+/XTff3/Pv/f+62uz5wQAAABqAJLrf91sdO3pBZ9+bvQHqTwnAAAAsAYgeeinF3964KfPR0auaigBAACAzwBYedjR9aeHnzlVAAAAwOcBjIxc6hAlgczopQAAAICzAGbJjyfjNjJ+adAyM75fjQYBAOACACMD9X/6+JWsMAAA/DiAiqP0xrimwdMo4fq14ikAAPwwgFnQM3uhWbCUFDrefA8AAADQtjhCs0aIamEkaXiYBUKje24JhAAAAIBhAeLpRWY3Toui6edpoRUAAADYWxxJkqFJgTMxeJUCyfYgCQAALgfwZISSryeBS1I0GTldSSEFAAAAOOMEjR54FtisJkIroI97gQAAcCmApDFqlhxJipzJ86SJGgAAAOBM8TMxXqkRbIVGyFFSZJshBAAAAHp12HE1gVJJrlQHrAAAAID9xdEWNi7OwLZwcDIpvo4cJwAAAOBdMNTCpqnKkoP091cTLwAAAEDbWhiZOTYrQ9ZVQztygI4FQwAAAMB0WcJKQTNpnh4FZa2wcAkAAAA40xyRFEBTiOmLzRyiI4MTAABwMYB0acrqS6ZLU6pLXI4VRwEA4FIASUEzaXReCX6qCdvtESAAAADQenEJchLwtGAJY1pMTYMqAAAAYE9hJDVe6aBDMkAxcr6eEjFb/xcAAIDLAaSLT1LDuNIU0QtLWI4FQwAAcBGAaoCSJi1nwVal+FEJlgAAAIB3RZGZw7EyDLma7OifOmABAAAuB5DAqQwuVAcuk2LHka0RAAAAQBQQVYsqM+emLRykVoEFAAAArBVGemF5WRL0VB2o6qBkP7FMEQAAACg1O/eFRclpEiQdqgYAAAD2JkR6eADbKOCpDly04tLGrYEQAABcDKAVDzRLkqB9spixYgQTYw0AAACcSYzOgpOkualSYGmFJq126pAVAAC4FEClGamyUCFpkk4bro45RQAAcDmAJJE5G4BOg6F0kLK9WLAGAAAAvHOEKkPPaWCVJkL6wqEtAAAAwH4DWHVG3jZUVQO1Y8EQAABcBmD28i1YfpgEVj08mDEdnNreLQ4AAJcCWGmgSIxkLyxgTBKxqdEEAAAA9iREe2HB0sioVhIoaRNW2z09DgAAlwOYGb+kOJo0R8yKLn1hUTsAAACwd2aokpysJFJ64fCm9q2tsgAAAEBPi5npQMUsIOqFw9iOJEMAAACAXglikp+rNlBVEqLbiyMAAABAn12vDFCkzRNpY0VSnAEAAADOJUWTIkbiJK2AHf2hPpYVBgCAHwdAREREREREREREREREREQ/of8CAAD//7WCTGG4m6z0AAAAAElFTkSuQmCC\",\n    \"certificate_link\": \"/certificate/b43ddf570a9ba9756f89eb61fbf1435f8d3e596c831b8f34b58f950aa2e69032\",\n    \"blockchain\": \"eth\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Stored File and Notarize",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Temp/test.txt"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/notary/api/v2/stored-files",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notary",
+								"api",
+								"v2",
+								"stored-files"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Stored File and Notarize",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Temp/test.txt"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/notary/api/v2/stored-files",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"notary",
+										"api",
+										"v2",
+										"stored-files"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Jul 2020 16:32:58 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"file_id\": \"d818d134-63b6-466f-a8b4-49a305cc46b2\"\n}"
+						}
+					]
+				},
+				{
+					"name": "List stored files",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/notary/api/v2/stored-files",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notary",
+								"api",
+								"v2",
+								"stored-files"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get stored files",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/notary/api/v2/stored-files",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"notary",
+										"api",
+										"v2",
+										"stored-files"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Jul 2020 16:33:15 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"files\": [\n        {\n            \"id\": \"d818d134-63b6-466f-a8b4-49a305cc46b2\",\n            \"name\": \"test.txt\",\n            \"size\": 19,\n            \"etag\": \"137e4844d94859420f1df31d2cd5ff86a4a186c7f0af6d362b79f390ad6490d2\",\n            \"etag_type\": \"sha256\",\n            \"certificate_id\": \"7933a2879317f89ab6278ffe7e433c721d36ebee743a90265df476db0dbb1774\",\n            \"created_at\": \"2020-07-28T16:32:58.029939Z\",\n            \"updated_at\": \"2020-07-28T16:32:58.123673Z\",\n            \"certificate\": {\n                \"id\": \"7933a2879317f89ab6278ffe7e433c721d36ebee743a90265df476db0dbb1774\",\n                \"merkle_root\": \"\",\n                \"merkle_proof\": \"\",\n                \"object\": {\n                    \"eTag\": \"137e4844d94859420f1df31d2cd5ff86a4a186c7f0af6d362b79f390ad6490d2\",\n                    \"key\": \"test.txt\",\n                    \"sequencer\": \"3f64c31a4e88ff862b\",\n                    \"size\": 19\n                },\n                \"txid\": \"\",\n                \"contract\": \"\",\n                \"sender\": \"\",\n                \"timestamp\": 0,\n                \"blockchain\": \"eth\",\n                \"eventtime\": null\n            }\n        }\n    ],\n    \"paging\": {\n        \"cursors\": {}\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get the stored file",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/notary/api/v2/stored-files/{{file_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notary",
+								"api",
+								"v2",
+								"stored-files",
+								"{{file_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get the stored file",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/notary/api/v2/stored-files/{{file_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"notary",
+										"api",
+										"v2",
+										"stored-files",
+										"{{file_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Jul 2020 16:35:27 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"file\": {\n        \"id\": \"d818d134-63b6-466f-a8b4-49a305cc46b2\",\n        \"name\": \"test.txt\",\n        \"size\": 19,\n        \"etag\": \"137e4844d94859420f1df31d2cd5ff86a4a186c7f0af6d362b79f390ad6490d2\",\n        \"etag_type\": \"sha256\",\n        \"certificate_id\": \"7933a2879317f89ab6278ffe7e433c721d36ebee743a90265df476db0dbb1774\",\n        \"created_at\": \"2020-07-28T16:32:58.029939Z\",\n        \"updated_at\": \"2020-07-28T16:32:58.123673Z\",\n        \"certificate\": {\n            \"id\": \"7933a2879317f89ab6278ffe7e433c721d36ebee743a90265df476db0dbb1774\",\n            \"merkle_root\": \"\",\n            \"merkle_proof\": \"\",\n            \"object\": {\n                \"eTag\": \"137e4844d94859420f1df31d2cd5ff86a4a186c7f0af6d362b79f390ad6490d2\",\n                \"key\": \"test.txt\",\n                \"sequencer\": \"3f64c31a4e88ff862b\",\n                \"size\": 19\n            },\n            \"txid\": \"\",\n            \"contract\": \"\",\n            \"sender\": \"\",\n            \"timestamp\": 0,\n            \"blockchain\": \"eth\",\n            \"eventtime\": null\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Download the stored file",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/notary/api/v2/stored-files/{{file_id}}/download",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notary",
+								"api",
+								"v2",
+								"stored-files",
+								"{{file_id}}",
+								"download"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Download the stored file",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/notary/api/v2/stored-files/{{file_id}}/download",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"notary",
+										"api",
+										"v2",
+										"stored-files",
+										"{{file_id}}",
+										"download"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "raw",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Jul 2020 16:36:09 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/octet-stream"
+								},
+								{
+									"key": "Content-Length",
+									"value": "19"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Disposition",
+									"value": "attachment;filename=test.txt"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								}
+							],
+							"cookie": [],
+							"body": "Cyber Notary API Test"
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.request.headers.add({key: 'User-Agent', value: 'ACP 1.0/Acronis Notary API' })"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

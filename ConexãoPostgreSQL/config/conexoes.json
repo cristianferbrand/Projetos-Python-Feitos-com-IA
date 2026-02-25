@@ -1,0 +1,344 @@
+[
+    {
+        "nome": "MB 99",
+        "host": "192.168.99.230",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 06",
+        "host": "192.168.6.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 08",
+        "host": "192.168.8.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 09",
+        "host": "192.168.9.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 17",
+        "host": "192.168.17.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 18",
+        "host": "192.168.18.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 20",
+        "host": "192.168.20.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 21",
+        "host": "192.168.21.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 24",
+        "host": "192.168.24.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 25",
+        "host": "192.168.25.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 26",
+        "host": "192.168.26.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 28",
+        "host": "192.168.28.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 29",
+        "host": "192.168.29.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 30",
+        "host": "192.168.30.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 31",
+        "host": "192.168.31.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 33",
+        "host": "192.168.33.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 34",
+        "host": "192.168.34.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 35",
+        "host": "192.168.35.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 36",
+        "host": "192.168.36.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 37",
+        "host": "192.168.37.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 38",
+        "host": "192.168.38.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 39",
+        "host": "192.168.39.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 40",
+        "host": "192.168.40.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 41",
+        "host": "192.168.41.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 45",
+        "host": "192.168.45.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 46",
+        "host": "192.168.46.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 47",
+        "host": "192.168.47.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 48",
+        "host": "192.168.48.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 49",
+        "host": "192.168.49.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 50",
+        "host": "192.168.50.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 51",
+        "host": "192.168.51.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 53",
+        "host": "192.168.53.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 81",
+        "host": "192.168.99.124",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 56",
+        "host": "192.168.56.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 57",
+        "host": "192.168.57.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 58",
+        "host": "192.168.58.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 59",
+        "host": "192.168.59.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 60",
+        "host": "192.168.60.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 61",
+        "host": "192.168.61.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 62",
+        "host": "192.168.62.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 63",
+        "host": "192.168.63.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 64",
+        "host": "192.168.64.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 65",
+        "host": "192.168.65.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 66",
+        "host": "192.168.66.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 68",
+        "host": "192.168.68.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 69",
+        "host": "192.168.69.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 70",
+        "host": "192.168.70.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 71",
+        "host": "192.168.71.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 72",
+        "host": "192.168.72.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 73",
+        "host": "192.168.73.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 74",
+        "host": "192.168.74.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 75",
+        "host": "192.168.75.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 76",
+        "host": "192.168.76.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 77",
+        "host": "192.168.77.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 78",
+        "host": "192.168.78.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 79",
+        "host": "192.168.79.250",
+        "port": "5432",
+        "database": "cadastro"
+    },
+    {
+        "nome": "MB 80",
+        "host": "192.168.80.250",
+        "port": "5432",
+        "database": "cadastro"
+    }
+]

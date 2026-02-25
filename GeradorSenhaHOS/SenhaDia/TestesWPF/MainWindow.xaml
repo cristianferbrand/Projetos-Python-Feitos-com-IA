@@ -1,0 +1,27 @@
+﻿<Window x:Class="TestesWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestesWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="177.224" Width="428.602" WindowStyle="None">
+   
+
+    <Grid>
+        <Label x:Name="labelT" HorizontalAlignment="Left" Margin="178,3,0,0" VerticalAlignment="Top">
+            <Label x:Name="label1" Content="Label" Background="#FFBB3E3E"/>
+        </Label>
+
+        <Label x:Name="label2" HorizontalAlignment="Left" Margin="178,50,0,0" VerticalAlignment="Top" Content="teste" Background="#FFBB3E3E">
+         
+        </Label>
+
+        <Label x:Name="label3" HorizontalAlignment="Left" Margin="178,3,0,0" VerticalAlignment="Top">
+         
+        </Label>
+
+
+    </Grid>
+
+</Window>

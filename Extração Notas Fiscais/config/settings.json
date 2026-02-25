@@ -1,0 +1,10 @@
+{
+  "fb_host": "localhost",
+  "fb_port": 3050,
+  "fb_user": "sysdba",
+  "fb_password": "masterkey",
+  "fb_charset": "UTF8",
+  "fb_driver": "firebird",
+  "fb_database": "C:\\BANCOS\\NOTAS_FISCAIS.FDB",
+  "xml_folder": "C:\\BANCOS\\XML\\ENTRADA"
+}

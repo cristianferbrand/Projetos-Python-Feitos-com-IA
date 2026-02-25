@@ -1,0 +1,4 @@
+{
+  "class_json_path": "g:\\Meu Drive\\Projetos Python\\CalculadoraReformaTributaria\\config\\classificacao_tributaria.json",
+  "api_base": "http://localhost:8080/api"
+}

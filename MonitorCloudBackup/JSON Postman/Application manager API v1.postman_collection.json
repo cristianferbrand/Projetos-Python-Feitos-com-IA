@@ -1,0 +1,214 @@
+{
+	"info": {
+		"_postman_id": "8235f165-d849-42e1-a7f6-09c584a3bedb",
+		"name": "Application manager API v1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48727415",
+		"_collection_link": "https://www.postman.com/grey-rocket-585331/acronis-cyber-platform-s-public-workspace/collection/3eewu8h/application-manager-api-v1?action=share&source=collection_link&creator=48727415"
+	},
+	"item": [
+		{
+			"name": "Documentation",
+			"item": [
+				{
+					"name": "Security schemes",
+					"item": [
+						{
+							"name": "OAuth 2.0",
+							"item": [],
+							"description": "## Overview\n\nSupported grant types:\n\n- `client_credentials`\n    \n- `password`\n    \n- `authorization_code`\n    \n\nAuthorization URI example: `https://dev-cloud.acronis.com/api/2/idp/authorize`  \nAccess token URI example: `https://dev-cloud.acronis.com/api/2/idp/token`\n\n## Request parameters\n\n### Headers\n\n| Name | Description |\n| --- | --- |\n| `Authorization` | (Required) Usual OAuth2 access token  <br>  <br>**Type**: String  <br>**Pattern**: ^Bearer \\[0-9a-zA-Z-._\\~+/\\]\\*=$ |\n\n## Scopes\n\n- `urn:acronis.com::platform-app-mgr::metadata_reader`\n    \n- `urn:acronis.com::platform-app-mgr::error_reporter`\n    \n- `urn:acronis.com::platform-app-mgr::custom_callback_executor`\n    \n- `urn:acronis.com::platform-app-mgr::application_enabler`\n    \n- `urn:acronis.com::platform-app-mgr::service_users`\n    \n- `urn:acronis.com::platform-app-mgr::enablement_status`"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			}
+		},
+		{
+			"name": "/application/{vendor_app_code}",
+			"item": [
+				{
+					"name": "/service_user:login",
+					"item": [
+						{
+							"name": "Log in using service user account",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const CODE_RESPONSE_MAP = {",
+											"    200: {",
+											"        mediaType: 'text/html',",
+											"    },",
+											"};",
+											"const STATUS_CODES = [200];",
+											"",
+											"const { code, responseSize } = pm.response;",
+											"",
+											"pm.test(`Response status code is one of: ${STATUS_CODES.join(', ')}.`, () => {",
+											"    pm.expect(code).to.be.oneOf(STATUS_CODES);",
+											"",
+											"    const { mediaType, schema } = CODE_RESPONSE_MAP[code];",
+											"    ((mediaType || responseSize) ? pm.test : pm.test.skip)(\"Content-type is as expected for the status code.\", () => {",
+											"        pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(mediaType);",
+											"    });",
+											"",
+											"    ((mediaType && (mediaType === 'application/json' || mediaType.endsWith('+json'))) ? pm.test : pm.test.skip)(\"JSON response is valid according to the API contract.\", () => {",
+											"        pm.expect(pm.response.json()).to.have.jsonSchema(schema);",
+											"    });",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/application/:vendor_app_code/service_user:login?tenant_id=4f74fd57-fd72-4a86-9f6b-f3b201ca9cc4&purpose=login&external_id=demo_analyst",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"application",
+										":vendor_app_code",
+										"service_user:login"
+									],
+									"query": [
+										{
+											"key": "tenant_id",
+											"value": "4f74fd57-fd72-4a86-9f6b-f3b201ca9cc4",
+											"description": "(Required) Tenant ID for the requested login.\n\n**Type**: String\n**Pattern**: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+										},
+										{
+											"key": "purpose",
+											"value": "login",
+											"description": "(Required) Mandatory purpose string explaining the reason for the requested login.\n\n**Type**: String"
+										},
+										{
+											"key": "external_id",
+											"value": "demo_analyst",
+											"description": "(Required) External user id.\n\n**Type**: String"
+										}
+									],
+									"variable": [
+										{
+											"key": "vendor_app_code",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "200",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/service_user:login",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"service_user:login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "html",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/html"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "clientSecret",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "https://dev-cloud.acronis.com/api/2/idp/token",
+				"type": "string"
+			},
+			{
+				"key": "grant_type",
+				"value": "client_credentials",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "root",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "root",
+				"type": "string"
+			},
+			{
+				"key": "client_authentication",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "authUrl",
+				"value": "http://localhost/api/2/idp/authorize",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://dev-cloud.acronis.com/api/application_manager/v2"
+		}
+	]
+}

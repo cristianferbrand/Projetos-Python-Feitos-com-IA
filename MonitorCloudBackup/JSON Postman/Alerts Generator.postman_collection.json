@@ -1,0 +1,1338 @@
+{
+	"info": {
+		"_postman_id": "e642fea1-739a-486f-ab6d-6719a90ca04d",
+		"name": "Alerts Generator",
+		"description": "To generate real alerts in the Acronis protection console, API users have to pass real data in the payloads.\n\nTo facilitate this, Acronis has prepared a Postman collection, which includes a set of alert examples and their payloads.\n\n## Prerequisites\n\n1. [Download and install Postman](https://www.postman.com/downloads/).\n    \n2. \\[If not created\\] Create an API client in your tenant as described in the following document:  \n    [https://www.acronis.com/en-us/support/documentation/AcronisCyberCloud/index.html#creating-api-client.html](https://www.acronis.com/en-us/support/documentation/AcronisCyberCloud/index.html#creating-api-client.html)\n    \n3. \\[If not created\\] Create a customer tenant where you will register your workload and create alerts as described in the following document:  \n    [https://www.acronis.com/en-us/support/documentation/AcronisCyberCloud/index.html#tenant-create.html](https://www.acronis.com/en-us/support/documentation/AcronisCyberCloud/index.html#tenant-create.html)\n    \n4. Obtain the customer tenant ID as follows:\n    \n    1. Log in to the management portal.\n        \n    2. On the Clients tab, select the target customer tenant where your workload is or will be registered.\n        \n    3. On the tenant properties panel, click the vertical ellipsis icon, and then click Show ID.\n        \n    4. Copy the text string that is shown in the Internal ID field, and then click **Cancel**.\n        \n5. \\[If there are no workloads in the customer tenant\\] Install the Acronis agent on your workload and register it in the customer tenant as described in the following document:  \n    [https://www.acronis.com/en-us/support/documentation/CyberProtectionService/#installing-software.html](https://www.acronis.com/en-us/support/documentation/CyberProtectionService/#installing-software.html)\n    \n6. \\[If not created\\] Create a protection plan and assign it to your registered workload as described here:  \n    [https://www.acronis.com/en-us/support/documentation/CyberProtectionService/#creating-protection-plan.html](https://www.acronis.com/en-us/support/documentation/CyberProtectionService/#creating-protection-plan.html)\n    \n\n## Postman collection contents\n\n1. **Authenticate** - fetches the authentication token using your API client credentials. The token is used by other requests in this collection.\n    \n2. **Fetch workloads** - fetches the list of workloads and their attributes.\n    \n3. **Fetch applied protection plans** - fetches the list of protection plans applied to the workload.\n    \n4. **Fetch protection plan** - fetches the information about the protection plan.\n    \n5. **Post an alert** - post an alert to Acronis Cyber Protect Cloud.\n    \n6. **Retrieve alert types** - fetches the list of available alert types.\n    \n\nStartFragment\n\n## Configure the collection variables\n\n### Base variables\n\n1. In the **Alerts Generator** collection, open the **Variables** tab.\n    \n2. Set **base_url** to the URL of your data center. For example, [https://eu8-cloud.acronis.com](https://eu8-cloud.acronis.com)\n    \n3. Set **tenant_id** to the customer tenant ID.\n    \n4. Set **client_id** to the client ID of your API client.\n    \n5. Set **client_secret** to the client secret of your API client.\n    \n\n### Workload variables\n\n1. \\[If not authenticated\\] Open the **Authenticate** request and click **Send**.\n    \n2. Open the **Fetch workloads** request and click **Send**.\n    \n3. Set the following variables with corresponding payload field values:\n    \n    1. Set **resourceId** to the value of the **id** field.\n        \n    2. Set **resourceName** and **machineName** to the value of the **name** field.\n        \n    3. Set **causingTenantName** to the value of the **tenant_name** field.\n        \n    4. Set **causingTenantId** to the value of the **tenant_id** field.\n        \n    5. Set **agentId** to the value of the **agent_id** field.\n        \n\n### Protection plan variables\n\n1. \\[If not authenticated\\] Open the **Authenticate** request and click **Send**.\n    \n2. Open the **Fetch applied protection plans** request and click **Send**. The **planId** variable will be automatically populated from the payload if your workload has the plan assigned.\n    \n3. Open the **Fetch protection plan** request and click **Send**. The **planName** variable will be automatically populated from the payload.\n    \n\nStartFragment\n\n## Post an alert\n\n1. \\[If not authenticated\\] Open the **Authenticate** request and click **Send**.\n    \n2. Expand the **Post an alert** request.\n    \n3. Select any alert example and click **Try.**\n    \n\nIf the request is successful, the alert will appear in the Acronis protection console.  \nStartFragment\n\n## To add more examples of alerts\n\n1. \\[If not authenticated\\] Open the **Authenticate** request and click **Send**.\n    \n2. Open the **Retrieve alert types** request and click **Send**. The response payload will include the list of alerts types.  \n    In this way, we can determine what the minimum requirement for a payload of a specific alert is.\n    \n3. It's a must for us the satisfy the **contextKeys** list for a type and place those as keys in the payload.  \n    Alerts with a **null** value in **searchableDetails** are general alerts, which are not bound to a device. Alerts that require **resourceId** to be passed are considered device alerts.\n    \n\nCopyright © 2019-2024 Acronis International GmbH. This is distributed under MIT license.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48727415",
+		"_collection_link": "https://www.postman.com/grey-rocket-585331/acronis-cyber-platform-s-public-workspace/collection/e0sy35e/alerts-generator?action=share&source=collection_link&creator=48727415"
+	},
+	"item": [
+		{
+			"name": "Authenticate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var responseJSON = JSON.parse(responseBody)\r",
+							"pm.collectionVariables.set(\"cloud_bearer_token\", responseJSON.access_token);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{client_secret}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{client_id}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "urn:acronis:tenant-id:{{tenant_id}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/api/2/idp/token",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"2",
+						"idp",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch workloads",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{cloud_bearer_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/resource_management/v4/resources?type=resource.machine&include_attributes=true",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"resource_management",
+						"v4",
+						"resources"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "resource.machine"
+						},
+						{
+							"key": "include_attributes",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch applied protection plans",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var responseJSON = JSON.parse(responseBody)\r",
+							"pm.collectionVariables.set(\"planId\", responseJSON.items[0][0].policy.id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{cloud_bearer_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/policy_management/v4/applications?context_id={{resourceId}}&policy_type=policy.protection.total",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"policy_management",
+						"v4",
+						"applications"
+					],
+					"query": [
+						{
+							"key": "context_id",
+							"value": "{{resourceId}}"
+						},
+						{
+							"key": "policy_type",
+							"value": "policy.protection.total"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch protection plan",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var responseJSON = JSON.parse(responseBody)\r",
+							"pm.collectionVariables.set(\"planName\", responseJSON.policy[0].name);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{cloud_bearer_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/policy_management/v4/policies/{{planId}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"policy_management",
+						"v4",
+						"policies",
+						"{{planId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post an alert",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{cloud_bearer_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"BackupDidNotStart\",\r\n    \"severity\": \"warning\",\r\n    \"details\": {\r\n        \"backupLocations\": [\r\n            {\r\n                \"name\": \"\",\r\n                \"type\": \"cloud\"\r\n            }\r\n        ],\r\n        \"backupSourcesType\": \"machines\",\r\n        \"planId\": \"{{planId}}\",\r\n        \"planName\": \"{{planName}}\",\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"alert_manager",
+						"v1",
+						"alerts"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "AgentVersionOutdated",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"AgentVersionOutdated\",\r\n    \"severity\": \"critical\",\r\n    \"details\": {\r\n        \"agentName\": \"{{agentName}}\",\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        },\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "BackupDidNotStart",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"BackupDidNotStart\",\r\n    \"severity\": \"warning\",\r\n    \"details\": {\r\n        \"backupLocations\": [\r\n            {\r\n                \"name\": \"\",\r\n                \"type\": \"cloud\"\r\n            }\r\n        ],\r\n        \"backupSourcesType\": \"machines\",\r\n        \"planId\": \"{{planId}}\",\r\n        \"planName\": \"{{planName}}\",\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "BackupFailed",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"BackupFailed\",\r\n    \"details\": {\r\n        \"activity\": {\r\n            \"id\": \"A28DAF43-B1F2-480B-AD5A-1CB7F3209746\",\r\n            \"type\": \"D332948D-A7A9-4E07-B76C-253DCF6E17FB\"\r\n        },\r\n        \"activityId\": \"A28DAF43-B1F2-480B-AD5A-1CB7F3209746\",\r\n        \"backupLocations\": [\r\n            {\r\n                \"name\": \"\",\r\n                \"type\": \"cloud\"\r\n            }\r\n        ],\r\n        \"backupSourcesType\": \"files\",\r\n        \"error\": {\r\n            \"code\": 20250646,\r\n            \"fields\": {\r\n                \"$module\": \"mms_vsa64_35435\",\r\n                \"AgentName\": \"DESKTOP-0KH4K1C\",\r\n                \"CommandID\": \"D332948D-A7A9-4E07-B76C-253DCF6E17FB\"\r\n            },\r\n            \"src\": {\r\n                \"file\": \"d:\\\\1627\\\\enterprise\\\\common\\\\tol\\\\command\\\\command.cpp\",\r\n                \"func\": \"Tol::`anonymous-namespace'::MakeFailResultWitnName\",\r\n                \"line\": 503,\r\n                \"tag\": \"0x8d165e86fb8195c5\"\r\n            },\r\n            \"suberror\": {\r\n                \"code\": 20250646,\r\n                \"fields\": {\r\n                    \"$module\": \"agent_protection_addon_vsa64_35435\",\r\n                    \"AgentName\": \"DESKTOP-0KH4K1C\",\r\n                    \"CommandID\": \"D332948D-A7A9-4E07-B76C-253DCF6E17FB\"\r\n                },\r\n                \"src\": {\r\n                    \"file\": \"d:\\\\1627\\\\enterprise\\\\common\\\\tol\\\\command\\\\command.cpp\",\r\n                    \"func\": \"Tol::`anonymous-namespace'::MakeFailResultWitnName\",\r\n                    \"line\": 503,\r\n                    \"tag\": \"0x8d165e86fb8195c5\"\r\n                },\r\n                \"suberror\": {\r\n                    \"code\": 20119593,\r\n                    \"fields\": {\r\n                        \"$module\": \"agent_protection_addon_vsa64_35435\"\r\n                    },\r\n                    \"src\": {\r\n                        \"file\": \"d:\\\\1627\\\\enterprise\\\\managers\\\\gtob\\\\protection\\\\agent_engine\\\\protect_command.cpp\",\r\n                        \"func\": \"`anonymous-namespace'::ProtectCommand::SafeExecute\",\r\n                        \"line\": 271,\r\n                        \"tag\": \"0xe6792a5ee190de61\"\r\n                    },\r\n                    \"suberror\": {\r\n                        \"code\": 20250646,\r\n                        \"fields\": {\r\n                            \"$module\": \"mms_vsa64_35435\",\r\n                            \"AgentName\": \"DESKTOP-0KH4K1C\",\r\n                            \"CommandID\": \"3884EE3A-030B-453A-BC66-7AD2E7880F57\"\r\n                        },\r\n                        \"src\": {\r\n                            \"file\": \"d:\\\\1627\\\\enterprise\\\\common\\\\tol\\\\command\\\\command.cpp\",\r\n                            \"func\": \"Tol::`anonymous-namespace'::MakeFailResultWitnName\",\r\n                            \"line\": 503,\r\n                            \"tag\": \"0x8d165e86fb8195c5\"\r\n                        },\r\n                        \"suberror\": {\r\n                            \"code\": 20250646,\r\n                            \"fields\": {\r\n                                \"$module\": \"agent_protection_addon_vsa64_35435\",\r\n                                \"AgentName\": \"DESKTOP-0KH4K1C\",\r\n                                \"CommandID\": \"3884EE3A-030B-453A-BC66-7AD2E7880F57\"\r\n                            },\r\n                            \"src\": {\r\n                                \"file\": \"d:\\\\1627\\\\enterprise\\\\common\\\\tol\\\\command\\\\command.cpp\",\r\n                                \"func\": \"Tol::`anonymous-namespace'::MakeFailResultWitnName\",\r\n                                \"line\": 503,\r\n                                \"tag\": \"0x8d165e86fb8195c5\"\r\n                            },\r\n                            \"suberror\": {\r\n                                \"code\": 20119581,\r\n                                \"fields\": {\r\n                                    \"$module\": \"agent_protection_addon_vsa64_35435\"\r\n                                },\r\n                                \"src\": {\r\n                                    \"file\": \"d:\\\\1627\\\\enterprise\\\\managers\\\\gtob\\\\protection\\\\commands\\\\launch_backup\\\\impl\\\\command.cpp\",\r\n                                    \"func\": \"`anonymous-namespace'::Command::SafeExecute\",\r\n                                    \"line\": 78,\r\n                                    \"tag\": \"0xd63b333701123475\"\r\n                                },\r\n                                \"suberror\": {\r\n                                    \"code\": 20119654,\r\n                                    \"fields\": {\r\n                                        \"$module\": \"agent_protection_addon_vsa64_35435\",\r\n                                        \"unresolvedItems\": \"C:\\\\Users\\\\bolzhat\\\\Desktop\\\\backup\\\\\\n\"\r\n                                    },\r\n                                    \"src\": {\r\n                                        \"file\": \"d:\\\\1627\\\\enterprise\\\\managers\\\\gtob\\\\protection\\\\agent_engine\\\\backup_job.cpp\",\r\n                                        \"func\": \"Gtob::Protection::`anonymous-namespace'::CreateErrorBasedOnKeyType\",\r\n                                        \"line\": 224,\r\n                                        \"tag\": \"0xc37471ceffa1825f\"\r\n                                    },\r\n                                    \"suberror\": {},\r\n                                    \"text\": \"Selected files or folders were not found: C:\\\\Users\\\\bolzhat\\\\Desktop\\\\backup\\\\\\n\",\r\n                                    \"types\": {\r\n                                        \"$module\": \"A\",\r\n                                        \"unresolvedItems\": \"W\"\r\n                                    }\r\n                                },\r\n                                \"text\": \"LaunchBackupCommand: Failed to execute the command.\",\r\n                                \"types\": {\r\n                                    \"$module\": \"A\"\r\n                                }\r\n                            },\r\n                            \"text\": \"TOL: Failed to execute the command. LaunchBackupCommand\",\r\n                            \"types\": {\r\n                                \"$module\": \"A\",\r\n                                \"AgentName\": \"W\",\r\n                                \"CommandID\": \"A\"\r\n                            }\r\n                        },\r\n                        \"text\": \"TOL: Failed to execute the command. LaunchBackupCommand\",\r\n                        \"types\": {\r\n                            \"$module\": \"A\",\r\n                            \"AgentName\": \"W\",\r\n                            \"CommandID\": \"A\"\r\n                        }\r\n                    },\r\n                    \"text\": \"Failed to execute the command.\",\r\n                    \"types\": {\r\n                        \"$module\": \"A\"\r\n                    }\r\n                },\r\n                \"text\": \"TOL: Failed to execute the command. Backup plan 'New protection plan (1)'\",\r\n                \"types\": {\r\n                    \"$module\": \"A\",\r\n                    \"AgentName\": \"W\",\r\n                    \"CommandID\": \"A\"\r\n                }\r\n            },\r\n            \"text\": \"TOL: Failed to execute the command. Backup plan 'New protection plan (1)'\",\r\n            \"types\": {\r\n                \"$module\": \"A\",\r\n                \"AgentName\": \"W\",\r\n                \"CommandID\": \"A\"\r\n            }\r\n        },\r\n        \"errorMessage\": {\r\n            \"code\": \"ProtectionUnresolvedFilesLocal\",\r\n            \"context\": {\r\n                \"cause_str\": \"Selected files or folders were not found: C:\\\\Users\\\\bolzhat\\\\Desktop\\\\backup\\\\\\n\",\r\n                \"effect_str\": \"TOL: Failed to execute the command. Backup plan 'New protection plan (1)'\",\r\n                \"unresolvedItems\": \"C:\\\\Users\\\\bolzhat\\\\Desktop\\\\backup\\\\\\n\"\r\n            },\r\n            \"domain\": \"Common\",\r\n            \"kbLink\": {\r\n                \"build\": 20589,\r\n                \"lineTag\": \"0xC37471CEFFA1825F\",\r\n                \"os\": \"Windows\",\r\n                \"product\": \"cloud\",\r\n                \"serCode\": \"BackupFailed+0x01350016+0x01350016+0x01330029+0x01350016+0x01350016+0x0133001D+0x01330066\",\r\n                \"version\": \"15.0\"\r\n            },\r\n            \"reason\": \"ProtectionUnresolvedFilesLocal\",\r\n            \"serCode\": \"0x01350016+0x01350016+0x01330029+0x01350016+0x01350016+0x0133001D+0x01330066\"\r\n        },\r\n        \"finishTime\": 1684253396,\r\n        \"planId\": \"{{planId}}\",\r\n        \"planName\": \"{{planName}}\",\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"resourceName\": \"{{resourceName}}\",\r\n        \"startTime\": 1684253396\r\n    },\r\n    \"category\": \"Backup\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "BackupStatusUnknown",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"BackupStatusUnknown\",\r\n    \"details\": {\r\n        \"agentId\": \"{{agentId}}\",\r\n        \"backupLocations\": [\r\n            {\r\n                \"type\": \"cloud\"\r\n            }\r\n        ],\r\n        \"backupSourcesType\": \"files\",\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        },\r\n        \"planId\": \"{{planId}}\",\r\n        \"planName\": \"{{planName}}\",\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    },\r\n    \"severity\": \"warning\",\r\n    \"category\": \"Backup\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "AgentAutoUpdateFailed",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"AgentAutoUpdateFailed\",\r\n    \"severity\": \"error\",\r\n    \"details\": {\r\n        \"agentId\": \"{{agentId}}\",\r\n        \"machineName\": \"{{machineName}}\",\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        },\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "MachineOffline20",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"MachineOffline20\",\r\n    \"severity\": \"warning\",\r\n    \"details\": {\r\n        \"machineName\": \"{{machineName}}\",\r\n        \"dayPassed\": 25,\r\n        \"dayLeft\": 20,\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        },\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "DiskFailureImminent",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"DiskFailureImminent\",\r\n    \"severity\": \"critical\",\r\n    \"details\": {\r\n        \"machineName\": \"{{machineName}}\",\r\n        \"diskName\": \"C drive\",\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        },\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "ResourceQuotaReached",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"ResourceQuotaReached\",\r\n    \"severity\": \"error\",\r\n    \"details\": {\r\n        \"causingTenantId\": \"{{causingTenantId}}\",\r\n        \"causingTenantName\": \"{{causingTenantName}}\",\r\n        \"isCausedByEuc\": \"VMs\",\r\n        \"offeringItem\": \"Virtual Machines\",\r\n        \"readableOfferingItem\": \"Virtual Machines\",\r\n        \"usage\": \"0\",\r\n        \"machineName\": \"AsioVM\",\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        },\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "FailToIsolate",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"FailToIsolate\",\r\n    \"severity\": \"critical\",\r\n    \"details\": {\r\n        \"machineName\": \"{{machineName}}\",\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        },\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "FailToDeisolate",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"FailToDeisolate\",\r\n    \"severity\": \"critical\",\r\n    \"details\": {\r\n        \"machineName\": \"{{machineName}}\",\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        },\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "EDRIncidentDetected",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"EDRIncidentDetected\",\r\n    \"severity\": \"critical\",\r\n    \"details\": {\r\n        \"agentId\": \"{{agentId}}\",\r\n        \"changeId\": \"231412-41234321-1234213423-11234434\",\r\n        \"edrAlertId\": \"9437640-438943298-324234325-4324324\",\r\n        \"incidentId\": \"13\",\r\n        \"isMitigated\": true,\r\n        \"machineName\": \"{{machineName}}\",\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        },\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "ComputePointsHardQuotaExceeds",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"ComputePointsHardQuotaExceeds\",\r\n    \"severity\": \"error\",\r\n    \"details\": {\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "CloudServersHardQuotaExceeds",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"CloudServersHardQuotaExceeds\",\r\n    \"severity\": \"error\",\r\n    \"details\": {\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "FailbackSwitchoverFailed",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"FailbackSwitchoverFailed\",\r\n    \"severity\": \"critical\",\r\n    \"details\": {\r\n        \"agentId\": \"{{agentId}}\",\r\n        \"activityUuid\": \"123456\",\r\n        \"failbackId\": \"321321-5342543-2345234-12312-5435\",\r\n        \"priority\": \"critical\",\r\n        \"taskId\": \"15\",\r\n        \"machineName\": \"{{machineName}}\",\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        },\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "FailbackFailed",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"FailbackFailed\",\r\n    \"severity\": \"critical\",\r\n    \"details\": {\r\n        \"agentId\": \"{{agentId}}\",\r\n        \"activityUuid\": \"123456\",\r\n        \"failbackId\": \"321321-5342543-2345234-12312-5434\",\r\n        \"priority\": \"critical\",\r\n        \"taskId\": \"16\",\r\n        \"machineName\": \"{{machineName}}\",\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        },\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "FailbackDataTransferError",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"FailbackDataTransferError\",\r\n    \"severity\": \"critical\",\r\n    \"details\": {\r\n        \"agentId\": \"{{agentId}}\",\r\n        \"activityUuid\": \"123457\",\r\n        \"failbackId\": \"321321-5342543-2345234-12312-5435\",\r\n        \"priority\": \"critical\",\r\n        \"taskId\": \"17\",\r\n        \"machineName\": \"{{machineName}}\",\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        },\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "FailbackConfirmingFailed",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"FailbackConfirmingFailed\",\r\n    \"severity\": \"critical\",\r\n    \"details\": {\r\n        \"agentId\": \"{{agentId}}\",\r\n        \"activityUuid\": \"123458\",\r\n        \"failbackId\": \"321321-5342543-2345234-12312-5431\",\r\n        \"priority\": \"critical\",\r\n        \"taskId\": \"18\",\r\n        \"machineName\": \"{{machineName}}\",\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        },\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "DRPolicyFailedCreateRecoveryServer",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"DRPolicyFailedCreateRecoveryServer\",\r\n    \"severity\": \"critical\",\r\n    \"details\": {\r\n        \"agentId\": \"{{agentId}}\",\r\n        \"machineName\": \"{{machineName}}\",\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        },\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"planId\": \"{{planId}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "BackupStopped",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"BackupStopped\",\r\n    \"severity\": \"warning\",\r\n    \"details\": {\r\n        \"agentId\": \"{{agentId}}\",\r\n        \"machineName\": \"{{machineName}}\",\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        },\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"planId\": \"{{planId}}\",\r\n        \"planName\": \"{{planName}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "BackupFinishedWithWarnings",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"BackupFinishedWithWarnings\",\r\n    \"details\": {\r\n        \"agentId\": \"{{agentId}}\",\r\n        \"backupLocations\": [\r\n            {\r\n                \"type\": \"cloud\"\r\n            }\r\n        ],\r\n        \"backupSourcesType\": \"files\",\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        },\r\n        \"planId\": \"{{planId}}\",\r\n        \"planName\": \"{{planName}}\",\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    },\r\n    \"severity\": \"warning\",\r\n    \"category\": \"Backup\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "ValidationFailed",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"ValidationFailed\",\r\n    \"severity\": \"error\",\r\n    \"details\": {\r\n        \"agentId\": \"{{agentId}}\",\r\n        \"machineName\": \"{{machineName}}\",\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        },\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"planId\": \"{{planId}}\",\r\n        \"planName\": \"{{planName}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "RunVMConnectionLost",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"RunVMConnectionLost\",\r\n    \"severity\": \"error\",\r\n    \"details\": {\r\n        \"agentId\": \"{{agentId}}\",\r\n        \"agentName\": \"{{agentName}}\",\r\n        \"processPath\": \"C:/Users/Georgi.Valkanov/Desktop/Integrations/Microsoft Sentinel\",\r\n        \"machineName\": \"{{machineName}}\",\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        },\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"planId\": \"{{planId}}\",\r\n        \"planName\": \"{{planName}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "InvalidHyperVConfiguration",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"InvalidHyperVConfiguration\",\r\n    \"severity\": \"critical\",\r\n    \"details\": {\r\n        \"agentId\": \"{{agentId}}\",\r\n        \"machineName\": \"{{machineName}}\",\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        },\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"planId\": \"{{planId}}\",\r\n        \"planName\": \"{{planName}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "EncryptionPasswordMissing",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"EncryptionPasswordMissing\",\r\n    \"severity\": \"critical\",\r\n    \"details\": {\r\n        \"agentId\": \"{{agentId}}\",\r\n        \"machineName\": \"{{machineName}}\",\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        },\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"planId\": \"{{planId}}\",\r\n        \"planName\": \"{{planName}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "BackupRecoveryFailed",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"BackupRecoveryFailed\",\r\n    \"severity\": \"critical\",\r\n    \"details\": {\r\n        \"agentId\": \"{{agentId}}\",\r\n        \"machineName\": \"{{machineName}}\",\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        },\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"planId\": \"{{planId}}\",\r\n        \"planName\": \"{{planName}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "ProtectionServiceNotWorking",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"ProtectionServiceNotWorking\",\r\n    \"severity\": \"error\",\r\n    \"details\": {\r\n        \"agentId\": \"{{agentId}}\",\r\n        \"machineName\": \"{{machineName}}\",\r\n        \"serviceName\": \"Acronis Cyber Core\",\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        },\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"planId\": \"{{planId}}\",\r\n        \"planName\": \"{{planName}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "ActiveProtectionServiceNotRunning",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"ActiveProtectionServiceNotRunning\",\r\n    \"severity\": \"critical\",\r\n    \"details\": {\r\n        \"agentId\": \"{{agentId}}\",\r\n        \"machineName\": \"{{machineName}}\",\r\n        \"serviceName\": \"Acronis Cyber Core\",\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        },\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"planId\": \"{{planId}}\",\r\n        \"planName\": \"{{planName}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "ActiveProtectionDetectedSuspectedCryptominingActivity",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"ActiveProtectionDetectedSuspectedCryptominingActivity\",\r\n    \"severity\": \"critical\",\r\n    \"details\": {\r\n        \"agentId\": \"{{agentId}}\",\r\n        \"machineName\": \"{{machineName}}\",\r\n        \"processName\": \"Acronis Cyber Core\",\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        },\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"planId\": \"{{planId}}\",\r\n        \"planName\": \"{{planName}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "ActiveProtectionDetectedAszPartitionAccessed",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"ActiveProtectionDetectedAszPartitionAccessed\",\r\n    \"severity\": \"critical\",\r\n    \"details\": {\r\n        \"agentId\": \"{{agentId}}\",\r\n        \"machineName\": \"{{machineName}}\",\r\n        \"processName\": \"Acronis Cyber Core\",\r\n        \"errorMessage\": {\r\n            \"kbLink\": {\r\n                \"serCode\": \"BackupStatusUnknown\"\r\n            }\r\n        },\r\n        \"resourceId\": \"{{resourceId}}\",\r\n        \"planId\": \"{{planId}}\",\r\n        \"planName\": \"{{planName}}\",\r\n        \"resourceName\": \"{{resourceName}}\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/alert_manager/v1/alerts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"alert_manager",
+								"v1",
+								"alerts"
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Fetch alert types",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{cloud_bearer_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/api/alert_manager/v1/types",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"alert_manager",
+						"v1",
+						"types"
+					],
+					"query": [
+						{
+							"key": "show_deleted",
+							"value": "true",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "cloud_bearer_token",
+			"value": ""
+		},
+		{
+			"key": "client_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "client_secret",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "base_url",
+			"value": "https://dev-cloud.acronis.com",
+			"type": "string"
+		},
+		{
+			"key": "planId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "resourceId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "resourceName",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "agentId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "agentName",
+			"value": "agent",
+			"type": "string"
+		},
+		{
+			"key": "planName",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "tenant_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "machineName",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "causingTenantName",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "causingTenantId",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

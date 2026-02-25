@@ -1,0 +1,1734 @@
+{
+	"info": {
+		"_postman_id": "4d3739a8-b697-4b6b-abbd-cf732439c49c",
+		"name": "Acronis Agent Manager API",
+		"description": "Provides information about agents registered in Acronis Cyber Protection and their endpoints.\n\nGuide [https://developer.acronis.com/doc/outbound/apis/api-library/agents/](https://developer.acronis.com/doc/outbound/apis/api-library/agents)\n\nFull Reference [https://developer.acronis.com/doc/agents/v2/reference/](https://developer.acronis.com/doc/agents/v2/reference/)\n\nBlog Post  \n[https://developer.acronis.com/blog/posts/automate-acronis-agent-installations/](https://developer.acronis.com/blog/posts/automate-acronis-agent-installations/)\n\nCopyright © 2019-2024 Acronis International GmbH. This is distributed under MIT license.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48727415",
+		"_collection_link": "https://www.postman.com/grey-rocket-585331/acronis-cyber-platform-s-public-workspace/collection/9q74fcr/acronis-agent-manager-api?action=share&source=collection_link&creator=48727415"
+	},
+	"item": [
+		{
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "Get self info using Basic Authentication",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/2/users/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Self Info Using Basic Authentication",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/2/users/me",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"2",
+										"users",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Feb 2020 07:57:26 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "23495626f3f9daf5ffc5114f170d1ed2"
+								},
+								{
+									"key": "X-Int-Request-Id",
+									"value": "hqHVet8pShwdLjTNVSEVfk"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"610d823925f23e1a5d4ed57683e24535b3d5173f\""
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"mfa_status\": \"disabled\",\n    \"tenant_id\": \"53b471e1-50dd-4557-ae4d-f687946821d4\",\n    \"language\": \"en\",\n    \"personal_tenant_id\": null,\n    \"business_types\": [],\n    \"idp_id\": \"11111111-1111-1111-1111-111111111111\",\n    \"created_at\": \"2019-12-02T12:22:13+00:00\",\n    \"enabled\": true,\n    \"version\": 4,\n    \"notifications\": [\n        \"quota\",\n        \"reports\",\n        \"backup_daily_report\"\n    ],\n    \"activated\": true,\n    \"id\": \"bfa9d672-35ee-4aad-b3d9-024d145f7fe3\",\n    \"contact\": {\n        \"zipcode\": null,\n        \"lastname\": \"Pavlov\",\n        \"state\": null,\n        \"city\": null,\n        \"phone\": null,\n        \"country\": null,\n        \"email\": \"stas.pavlov@example.com\",\n        \"firstname\": \"Stas\",\n        \"address2\": null,\n        \"address1\": null\n    },\n    \"login\": \"stas.pavlov@example.com\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create API Client",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"type\": \"api_client\",\r\n\t\"tenant_id\": \"{{my_tenant_id}}\",\r\n\t\"token_endpoint_auth_method\": \"client_secret_basic\",\r\n\t\"data\": {\r\n\t\t\"client_name\": \"API.Client\"\r\n\t}\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/2/clients",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"clients"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create API Client",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"type\": \"agent\",\r\n\t\"tenant_id\": \"{{my_tenant_id}}\",\r\n\t\"token_endpoint_auth_method\": \"client_secret_basic\",\r\n\t\"data\": {\r\n\t\t\"client_name\": \"API.Client\"\r\n\t}\r\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/api/2/clients",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"2",
+										"clients"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Feb 2020 11:20:39 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "479"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "f39d584f0cff42b0e5b66448c3947ccb"
+								},
+								{
+									"key": "X-Int-Request-Id",
+									"value": "bUW6jbo8aJ6NgqnxPTsdZ7"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token_endpoint_auth_method\": \"client_secret_basic\",\n    \"created_by\": \"bfa9d672-35ee-4cad-b987-024d145f7fe3\",\n    \"redirect_uris\": [],\n    \"data\": {\n        \"client_name\": \"API.Client\"\n    },\n    \"status\": \"enabled\",\n    \"created_at\": \"2020-02-26T11:20:39+00:00\",\n    \"tenant_id\": \"53b471e1-50dd-4557-ae6d-f687923121d4\",\n    \"client_secret\": \"aa6f81cb2b7f4306aeeb16815ea71ef3\",\n    \"registration_access_token\": \"5fef399909ca48929c9e8d04350af3e1\",\n    \"type\": \"agent\",\n    \"client_id\": \"c5597043-98ed-4474-ad09-d90a34513651\",\n    \"client_secret_expires_at\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete API Client",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/2/clients/{{client_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"clients",
+								"{{client_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Issue a JWT token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"access_token\", jsonData.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{client_id}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"name": "Content-Type",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/2/idp/token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"idp",
+								"token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Issue a JWT Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"name": "Content-Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/2/idp/token",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"2",
+										"idp",
+										"token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 04 Feb 2020 08:46:50 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "7b0cb0506c137a4ba40b76756ad27c12"
+								},
+								{
+									"key": "X-Int-Request-Id",
+									"value": "pba9djkgyxDK69dYwvCN2F"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"<access_token>\",\n    \"token_type\": \"bearer\",\n    \"expires_on\": 1580813210,\n    \"id_token\": \"<id_token>\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get API Client Info (including tenant_id) using an issues token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"my_tenant_id\", jsonData.tenant_id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/2/clients/{{client_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"2",
+								"clients",
+								"{{client_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get API Client info using",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/2/clients/{{client_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"2",
+										"clients",
+										"{{client_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 Apr 2020 07:35:30 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "e4117c1775fb2a5322bcb9a8e664f979"
+								},
+								{
+									"key": "X-Int-Request-Id",
+									"value": "DyMD9jX2e5a7f3fAMMufR6"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"d4f89a72fdc90e8ea2f29374477534c7ba8a1216\""
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"tenant_id\": \"80ab3c1f-8af0-40d3-9848-8eb5b439d88c\",\n    \"client_secret_expires_at\": 0,\n    \"created_by\": \"6eca7db5-d544-4528-44bb-120d43673d50\",\n    \"client_id\": \"375cccc4-74e1-41db-c82f-b20fe38476da\",\n    \"created_at\": \"2020-04-13T07:33:31+00:00\",\n    \"data\": {\n        \"client_name\": \"MC Beta API Client\"\n    },\n    \"redirect_uris\": [],\n    \"last_access_at\": \"2020-04-13T07:35:09+00:00\",\n    \"last_access_from_ip\": \"10.0.0.1\",\n    \"type\": \"api_client\",\n    \"status\": \"enabled\",\n    \"token_endpoint_auth_method\": \"client_secret_basic\"\n}"
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Agents",
+			"item": [
+				{
+					"name": "Fetch agents list limited by a tenant for which API Client was created",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/agent_manager/v2/agents",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"agent_manager",
+								"v2",
+								"agents"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Fetch agents list limited by a tenant for which API Client was created",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/agent_manager/v2/agents",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"agent_manager",
+										"v2",
+										"agents"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 02 Sep 2020 09:48:04 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"items\": [\n        {\n            \"id\": \"f851d328-2158-45f3-a8c4-539cf2334d9c\",\n            \"tenant\": {\n                \"id\": \"1480374\",\n                \"name\": \"Stanislav.Pavlov@examples.net\"\n            },\n            \"hostname\": \"host-O0000000\",\n            \"host_id\": \"f2695469-ae78-4d58-bc9d-976fab83ac46\",\n            \"core_version\": {\n                \"current\": {\n                    \"release_id\": \"1.2.8\",\n                    \"build\": \"174\"\n                }\n            },\n            \"units\": [\n                {\n                    \"name\": \"active_protection\",\n                    \"version\": {\n                        \"current\": {\n                            \"release_id\": \"0.0.0\",\n                            \"build\": \"1\"\n                        }\n                    }\n                },\n                {\n                    \"name\": \"atp-agent\",\n                    \"version\": {\n                        \"current\": {\n                            \"release_id\": \"0.0.0\",\n                            \"build\": \"1\"\n                        }\n                    },\n                    \"meta\": {\n                        \"schema_ver\": 1,\n                        \"format\": \"json\",\n                        \"meta\": \"eyJjb21wb25lbnRzIjpbeyJuYW1lIjoiQUNUSVZFX1BST1RFQ1RJT04iLCJ1cGRhdGVfdGltZSI6Ik1vbiwgMjQgQXVnIDIwMjAgMTg6MDA6NDEgKzAzMDAiLCJ2ZXJzaW9uIjoiMS4wLjAuNjU2In0seyJuYW1lIjoiVlVMTkVSQUJJTElUWV9BU1NFU1NNRU5UIiwidXBkYXRlX3RpbWUiOiJGcmksIDI4IEF1ZyAyMDIwIDE4OjAwOjExICswMzAwIiwidmVyc2lvbiI6IjEwMDguMC4wLjAifSx7Im5hbWUiOiJBTlRJVklSVVNfRU5HSU5FIiwidXBkYXRlX3RpbWUiOiJXZWQsIDAyIFNlcCAyMDIwIDEyOjAxOjAyICswMzAwIiwidmVyc2lvbiI6IjgxNzI4In1dfQ==\"\n                    }\n                },\n                {\n                    \"name\": \"atp-downloader\",\n                    \"version\": {\n                        \"current\": {\n                            \"release_id\": \"0.0.0\",\n                            \"build\": \"1\"\n                        }\n                    }\n                },\n                {\n                    \"name\": \"cyber-protect-service\",\n                    \"version\": {\n                        \"current\": {\n                            \"release_id\": \"0.0.0\",\n                            \"build\": \"1\"\n                        }\n                    }\n                },\n                {\n                    \"name\": \"mms\",\n                    \"version\": {\n                        \"current\": {\n                            \"release_id\": \"0.0.0\",\n                            \"build\": \"1\"\n                        }\n                    }\n                },\n                {\n                    \"name\": \"sync-unit\",\n                    \"version\": {\n                        \"current\": {\n                            \"release_id\": \"0.0.0\",\n                            \"build\": \"1\"\n                        }\n                    }\n                },\n                {\n                    \"name\": \"task-manager\",\n                    \"version\": {\n                        \"current\": {\n                            \"release_id\": \"0.0.0\",\n                            \"build\": \"1\"\n                        }\n                    }\n                }\n            ],\n            \"auto_update\": false,\n            \"meta\": {\n                \"atp\": {\n                    \"components\": [\n                        {\n                            \"name\": \"ACTIVE_PROTECTION\",\n                            \"update_time\": \"Mon, 24 Aug 2020 18:00:41 +0300\",\n                            \"version\": \"1.0.0.656\"\n                        },\n                        {\n                            \"name\": \"VULNERABILITY_ASSESSMENT\",\n                            \"update_time\": \"Fri, 28 Aug 2020 18:00:11 +0300\",\n                            \"version\": \"1008.0.0.0\"\n                        },\n                        {\n                            \"name\": \"ANTIVIRUS_ENGINE\",\n                            \"update_time\": \"Wed, 02 Sep 2020 12:01:02 +0300\",\n                            \"version\": \"81728\"\n                        }\n                    ]\n                }\n            },\n            \"platform\": {\n                \"family\": \"WINDOWS\",\n                \"arch\": \"X64\",\n                \"name\": \"windows\",\n                \"caps\": 0,\n                \"product_type\": 0,\n                \"service_pack\": 0,\n                \"sku\": 0,\n                \"suite_mask\": 0,\n                \"version_major\": 0,\n                \"version_minor\": 0\n            },\n            \"name\": \"\",\n            \"online\": true,\n            \"enabled\": true,\n            \"registration_date\": \"Fri, 10 Apr 2020 08:31:33 +0000\"\n        }\n    ],\n    \"paging\": {\n        \"cursors\": {}\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Force to start update of all agents",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"agent_ids\": [\r\n        \"d8a7059e-fda4-480e-b400-968ed5ffdd59\",\r\n        \"b757f01e-0b14-4788-b9a0-2671469517d7\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/agent_manager/v2/agents/update:force",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"agent_manager",
+								"v2",
+								"agents",
+								"update:force"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Force to start update of all agents",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/agent_manager/v2/agents/update:force",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"agent_manager",
+										"v2",
+										"agents",
+										"update:force"
+									]
+								}
+							},
+							"status": "Accepted",
+							"code": 202,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 11 May 2021 07:08:41 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "15"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"value\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Fetch agents list for a tenant",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/agent_manager/v2/agents?tenant_id={{tenant_id_int}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"agent_manager",
+								"v2",
+								"agents"
+							],
+							"query": [
+								{
+									"key": "tenant_id",
+									"value": "{{tenant_id_int}}",
+									"description": "The tenant _id is an int value as for APIv1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch an agent by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/agent_manager/v2/agents/{{agent_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"agent_manager",
+								"v2",
+								"agents",
+								"{{agent_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Fetch an agent by id -- Agent not foumd",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/agent_manager/v2/agents/{{agent_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"agent_manager",
+										"v2",
+										"agents",
+										"{{agent_id}}"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 02 Sep 2020 10:25:22 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"domain\": \"AGENT_MANAGER\",\n    \"code\": \"AGENT_NOT_FOUND\",\n    \"reason\": \"AGENT_NOT_FOUND\",\n    \"debug\": {\n        \"msg\": \"GET (7e81c79d6a3f58a34b1f8bebcaee8ece) to /api/agent_manager/v2/agents/f851d328-2158-45f3-a8c4-539cf2334d9c: failed to retrieve registered agent: no registered agent with the id\"\n    }\n}"
+						},
+						{
+							"name": "Fetch an agent by id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/agent_manager/v2/agents/{{agent_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"agent_manager",
+										"v2",
+										"agents",
+										"{{agent_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 02 Sep 2020 10:26:18 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"f851d328-2158-45f3-a8c4-539cf2334d9c\",\n    \"tenant\": {\n        \"id\": \"1480374\",\n        \"name\": \"Stanislav.Pavlov@examples.net\"\n    },\n    \"hostname\": \"host-O0000000\",\n    \"host_id\": \"f2695469-ae78-4d58-bc9d-976fab83ac46\",\n    \"core_version\": {\n        \"current\": {\n            \"release_id\": \"1.2.8\",\n            \"build\": \"174\"\n        }\n    },\n    \"units\": [\n        {\n            \"name\": \"active_protection\",\n            \"version\": {\n                \"current\": {\n                    \"release_id\": \"0.0.0\",\n                    \"build\": \"1\"\n                }\n            }\n        },\n        {\n            \"name\": \"atp-agent\",\n            \"version\": {\n                \"current\": {\n                    \"release_id\": \"0.0.0\",\n                    \"build\": \"1\"\n                }\n            },\n            \"meta\": {\n                \"schema_ver\": 1,\n                \"format\": \"json\",\n                \"meta\": \"eyJjb21wb25lbnRzIjpbeyJuYW1lIjoiQUNUSVZFX1BST1RFQ1RJT04iLCJ1cGRhdGVfdGltZSI6Ik1vbiwgMjQgQXVnIDIwMjAgMTg6MDA6NDEgKzAzMDAiLCJ2ZXJzaW9uIjoiMS4wLjAuNjU2In0seyJuYW1lIjoiVlVMTkVSQUJJTElUWV9BU1NFU1NNRU5UIiwidXBkYXRlX3RpbWUiOiJGcmksIDI4IEF1ZyAyMDIwIDE4OjAwOjExICswMzAwIiwidmVyc2lvbiI6IjEwMDguMC4wLjAifSx7Im5hbWUiOiJBTlRJVklSVVNfRU5HSU5FIiwidXBkYXRlX3RpbWUiOiJXZWQsIDAyIFNlcCAyMDIwIDEyOjAxOjAyICswMzAwIiwidmVyc2lvbiI6IjgxNzI4In1dfQ==\"\n            }\n        },\n        {\n            \"name\": \"atp-downloader\",\n            \"version\": {\n                \"current\": {\n                    \"release_id\": \"0.0.0\",\n                    \"build\": \"1\"\n                }\n            }\n        },\n        {\n            \"name\": \"cyber-protect-service\",\n            \"version\": {\n                \"current\": {\n                    \"release_id\": \"0.0.0\",\n                    \"build\": \"1\"\n                }\n            }\n        },\n        {\n            \"name\": \"mms\",\n            \"version\": {\n                \"current\": {\n                    \"release_id\": \"0.0.0\",\n                    \"build\": \"1\"\n                }\n            }\n        },\n        {\n            \"name\": \"sync-unit\",\n            \"version\": {\n                \"current\": {\n                    \"release_id\": \"0.0.0\",\n                    \"build\": \"1\"\n                }\n            }\n        },\n        {\n            \"name\": \"task-manager\",\n            \"version\": {\n                \"current\": {\n                    \"release_id\": \"0.0.0\",\n                    \"build\": \"1\"\n                }\n            }\n        }\n    ],\n    \"auto_update\": false,\n    \"meta\": {\n        \"atp\": {\n            \"components\": [\n                {\n                    \"name\": \"ACTIVE_PROTECTION\",\n                    \"update_time\": \"Mon, 24 Aug 2020 18:00:41 +0300\",\n                    \"version\": \"1.0.0.656\"\n                },\n                {\n                    \"name\": \"VULNERABILITY_ASSESSMENT\",\n                    \"update_time\": \"Fri, 28 Aug 2020 18:00:11 +0300\",\n                    \"version\": \"1008.0.0.0\"\n                },\n                {\n                    \"name\": \"ANTIVIRUS_ENGINE\",\n                    \"update_time\": \"Wed, 02 Sep 2020 12:01:02 +0300\",\n                    \"version\": \"81728\"\n                }\n            ]\n        }\n    },\n    \"platform\": {\n        \"family\": \"WINDOWS\",\n        \"arch\": \"X64\",\n        \"name\": \"windows\",\n        \"caps\": 0,\n        \"product_type\": 0,\n        \"service_pack\": 0,\n        \"sku\": 0,\n        \"suite_mask\": 0,\n        \"version_major\": 0,\n        \"version_minor\": 0\n    },\n    \"name\": \"\",\n    \"online\": true,\n    \"enabled\": true,\n    \"registration_date\": \"Fri, 10 Apr 2020 08:31:33 +0000\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get agents update configuration",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/agent_manager/v2/agents/update/configuration",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"agent_manager",
+								"v2",
+								"agents",
+								"update",
+								"configuration"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get agents update configuration",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/agent_manager/v2/agents/update/configuration",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"agent_manager",
+										"v2",
+										"agents",
+										"update",
+										"configuration"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 11 May 2021 07:06:27 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"max_concurrent_agent_update_count\": 1000,\n    \"min_update_package_fail_ratio_denominator\": 1000,\n    \"update_package_fail_ratio_threshold\": 0.001,\n    \"max_agent_fail_count\": 3,\n    \"update_window_start_offset_sec\": 0,\n    \"update_window_end_offset_sec\": -900\n}"
+						}
+					]
+				},
+				{
+					"name": "Get the agents refernces",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/agent_manager/v2/agent_update_references?update_channel=STABLE&os_family=WINDOWS&os_arch=X64",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"agent_manager",
+								"v2",
+								"agent_update_references"
+							],
+							"query": [
+								{
+									"key": "update_channel",
+									"value": "STABLE"
+								},
+								{
+									"key": "os_family",
+									"value": "WINDOWS"
+								},
+								{
+									"key": "os_arch",
+									"value": "X64"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get the agents refernces",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/agent_manager/v2/agent_update_references?update_channel=STABLE&os_family=WINDOWS&os_arch=X64",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"agent_manager",
+										"v2",
+										"agent_update_references"
+									],
+									"query": [
+										{
+											"key": "update_channel",
+											"value": "STABLE"
+										},
+										{
+											"key": "os_family",
+											"value": "WINDOWS"
+										},
+										{
+											"key": "os_arch",
+											"value": "X64"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 May 2021 08:37:44 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"update_channel\": \"STABLE\",\n    \"os_family\": \"WINDOWS\",\n    \"os_arch\": \"X64\",\n    \"version\": {\n        \"release_name\": \"15.0.26822\",\n        \"release_id\": \"15.0.1\",\n        \"build\": \"26822\"\n    },\n    \"url\": \"https://dl.managed-protection.com/u/baas/4.0/15.0.26822/Cyber_Protection_Agent_for_Windows_x64.exe\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get an agent update settings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/agent_manager/v2/agent_update_settings/{{agent_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"agent_manager",
+								"v2",
+								"agent_update_settings",
+								"{{agent_id}}"
+							],
+							"query": [
+								{
+									"key": "master",
+									"value": "true",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get an agent update settings",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/agent_manager/v2/agent_update_settings/{{agent_id}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"agent_manager",
+										"v2",
+										"agent_update_settings",
+										"{{agent_id}}"
+									],
+									"query": [
+										{
+											"key": "master",
+											"value": "true",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 May 2021 08:54:08 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"tenant_id\": \"1952010\",\n    \"agent_id\": \"d8a7059e-fda4-480e-b400-968ed5ffdd59\",\n    \"update_channel\": \"CURRENT\",\n    \"automatic\": false,\n    \"maintenance_window\": {\n        \"time_from\": \"23:00:00\",\n        \"time_to\": \"08:00:00\",\n        \"days_of_week\": [\n            \"MONDAY\",\n            \"TUESDAY\",\n            \"WEDNESDAY\",\n            \"THURSDAY\",\n            \"FRIDAY\",\n            \"SATURDAY\",\n            \"SUNDAY\"\n        ]\n    },\n    \"inherited_from_tenant_id\": \"1952004\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get agents master update settings for a tenant",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/agent_manager/v2/agent_update_settings/{{customer_tenant_id}}?master=true",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"agent_manager",
+								"v2",
+								"agent_update_settings",
+								"{{customer_tenant_id}}"
+							],
+							"query": [
+								{
+									"key": "master",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get agents master update settings for a tenant",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/agent_manager/v2/agent_update_settings/{{customer_tenant_id_int}}?master=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"agent_manager",
+										"v2",
+										"agent_update_settings",
+										"{{customer_tenant_id_int}}"
+									],
+									"query": [
+										{
+											"key": "master",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 May 2021 08:56:49 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Front-End-Https",
+									"value": "on"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "ETag,Content-Length,Content-Type,Retry-After"
+								},
+								{
+									"key": "P3P",
+									"value": "CP=\"ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI\""
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"tenant_id\": \"2076099\",\n    \"update_channel\": \"CURRENT\",\n    \"automatic\": false,\n    \"maintenance_window\": {\n        \"time_from\": \"23:00:00\",\n        \"time_to\": \"08:00:00\",\n        \"days_of_week\": [\n            \"MONDAY\",\n            \"TUESDAY\",\n            \"WEDNESDAY\",\n            \"THURSDAY\",\n            \"FRIDAY\",\n            \"SATURDAY\",\n            \"SUNDAY\"\n        ]\n    },\n    \"inherited_from_tenant_id\": \"1516165\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.request.headers.add({key: 'User-Agent', value: 'ACP 1.0/Acronis Agent Manager API' })"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

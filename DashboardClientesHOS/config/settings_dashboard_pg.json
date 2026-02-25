@@ -1,0 +1,15 @@
+{
+  "postgres": {
+    "host": "192.168.1.167",
+    "port": 5432,
+    "dbname": "mapacliente",
+    "user": "mapa_app",
+    "password": "hos123",
+    "schema": "public"
+  },
+  "theme_dark": true,
+  "map_style": "carto-positron",
+  "heatmap_enabled": false,
+  "heat_radius": 20,
+  "force_fallback_point": true
+}

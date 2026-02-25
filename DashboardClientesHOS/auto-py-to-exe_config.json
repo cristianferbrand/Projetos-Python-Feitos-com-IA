@@ -1,0 +1,101 @@
+{
+ "version": "auto-py-to-exe-configuration_v1",
+ "pyinstallerOptions": [
+  {
+   "optionDest": "noconfirm",
+   "value": true
+  },
+  {
+   "optionDest": "filenames",
+   "value": "G:/Meu Drive/Projetos Python/DashboardClientesHOS/dashboard_clientes_hos_pg.py"
+  },
+  {
+   "optionDest": "onefile",
+   "value": false
+  },
+  {
+   "optionDest": "console",
+   "value": true
+  },
+  {
+   "optionDest": "icon_file",
+   "value": "G:/Meu Drive/Projetos Python/DashboardClientesHOS/icone/brasil.ico"
+  },
+  {
+   "optionDest": "clean_build",
+   "value": false
+  },
+  {
+   "optionDest": "strip",
+   "value": false
+  },
+  {
+   "optionDest": "noupx",
+   "value": false
+  },
+  {
+   "optionDest": "disable_windowed_traceback",
+   "value": false
+  },
+  {
+   "optionDest": "uac_admin",
+   "value": false
+  },
+  {
+   "optionDest": "uac_uiaccess",
+   "value": false
+  },
+  {
+   "optionDest": "argv_emulation",
+   "value": false
+  },
+  {
+   "optionDest": "bootloader_ignore_signals",
+   "value": false
+  },
+  {
+   "optionDest": "hiddenimports",
+   "value": "flet_webview"
+  },
+  {
+   "optionDest": "hiddenimports",
+   "value": "sqlalchemy.dialects.postgresql"
+  },
+  {
+   "optionDest": "collect_all",
+   "value": "folium"
+  },
+  {
+   "optionDest": "collect_all",
+   "value": "branca"
+  },
+  {
+   "optionDest": "collect_all",
+   "value": "jinja2"
+  },
+  {
+   "optionDest": "collect_all",
+   "value": "psycopg2"
+  },
+  {
+   "optionDest": "collect_submodules",
+   "value": "pandas"
+  },
+  {
+   "optionDest": "hiddenimports",
+   "value": "psycopg2"
+  },
+  {
+   "optionDest": "hiddenimports",
+   "value": "psycopg2._psycopg"
+  },
+  {
+   "optionDest": "hiddenimports",
+   "value": "psycopg2.tz"
+  }
+ ],
+ "nonPyinstallerOptions": {
+  "increaseRecursionLimit": true,
+  "manualArguments": ""
+ }
+}

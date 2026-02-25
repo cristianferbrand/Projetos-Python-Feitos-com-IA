@@ -1,0 +1,27 @@
+{
+  "source_path": "\\\\App-db-server\\app\\SolicitaçõesDBA",
+  "dest_path": "C:\\HOS\\AutoUpdate",
+  "keep": [
+    "auto_updater_gui.exe",
+    "auto_updater_gui.py",
+    "backups",
+    "logs",
+    "updater_config.json"
+  ],
+  "processes_to_kill": [
+    "SolicitaçõesLeadTech.exe"
+  ],
+  "max_retries": 2,
+  "retry_wait_seconds": 2,
+  "create_backup_zip": false,
+  "auth": {
+    "use_credentials": true,
+    "domain": "",
+    "username": "Administrator",
+    "password": "hos@26214400",
+    "save_password": true,
+    "delete_connection_after": true
+  },
+  "safe_mode": true,
+  "restart_after": ""
+}

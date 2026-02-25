@@ -1,0 +1,5 @@
+psutil==6.0.0
+mss==9.0.1
+Pillow==10.4.0
+requests==2.32.3
+pywin32==306

@@ -1,0 +1,12 @@
+{
+  "BASE_URL": "https://backupcloud.fsassistencia.com.br",
+  "CLIENT_ID": "8857d247-853a-408d-9189-861c4d3efdfe",
+  "CLIENT_SECRET": "mwh4sfypidsarqnk6ixpucy5dizuzv64br6olsc4dmrw476rg6fq",
+  "DATABASE_URL": "",
+  "CACHE_TTL_SECONDS": 300,
+  "CACHE_MODE": "cache-first",
+  "VERIFY_SSL": true,
+  "PAGE_SIZE": 800,
+  "LOG_TO_FILE": false,
+  "ALERTS_LIMIT": 1000
+}

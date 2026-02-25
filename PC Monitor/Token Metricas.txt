@@ -1,0 +1,5 @@
+$env:SECRET_TOKEN = "4Zbp_6Tzqp5AsQz0zJgZp0NUVRwpemicd567r6ASS-U"
+py -m uvicorn --app-dir "C:\Users\Administrator\Desktop\MonitorPC" metrics_agent:app --host 0.0.0.0 --port 8000 --workers 1
+
+
+http://26.92.146.196:8000/healthz?token=4Zbp_6Tzqp5AsQz0zJgZp0NUVRwpemicd567r6ASS-U

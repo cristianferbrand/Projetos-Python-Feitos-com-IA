@@ -1,0 +1,30 @@
+﻿<Window x:Class="SenhaDia.teste"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SenhaDia"
+        mc:Ignorable="d"
+        Title="teste" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Content="Click me">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Visibility" Value="Hidden" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsMouseOver, 
+                        ElementName=SomeLabel}" Value="True">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Label Grid.Row="1" Name="SomeLabel" Content="Hover over me" 
+               Background="LightGreen" />
+    </Grid>
+</Window>
